@@ -1,8 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   basePath: "/nusescholars",
-  output: "export", // <=== enables static exports
+  output: "export",
   reactStrictMode: true,
+  webpack: (config) => {
+    config.cache = false;
+    return config;
+  },
 };
 
 export default nextConfig;
