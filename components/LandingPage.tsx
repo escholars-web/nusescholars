@@ -12,7 +12,7 @@ const galleryItems = [
   {
     title: "Humans of DE-Scholars",
     image: "/images/orientation2024.jpg",
-    link: "/humans",
+    link: "/humans-of-descholars",
   },
 ];
 
