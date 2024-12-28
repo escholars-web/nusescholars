@@ -9,7 +9,7 @@ Sort database of Descholars by
 """
 
 input_file = "../public/data/database.json"
-output_file = "../public/data/sorted_databse.json"
+output_file = "../public/data/sorted_database.json"
 
 # Load the JSON data
 with open(input_file, "r") as f:
