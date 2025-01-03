@@ -53,6 +53,7 @@ const LinkItems: React.FC<LinksProps> = ({ linkItems }) => {
                   transform: "translateX(-50%)",
                   color: "white",
                   fontWeight: "bold",
+                  fontFamily: "monospace",
                   textShadow: "0px 2px 4px rgba(0, 0, 0, 0.5)",
                   backgroundColor: "rgba(0, 0, 0, 0.4)",
                   padding: "0.5rem 1rem",

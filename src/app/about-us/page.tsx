@@ -2,14 +2,17 @@
 
 import React from "react";
 import PageTemplate from "../../../components/PageTemplate";
-import HeroSection from "../../../components/AboutUsPage/HeroSection";
+import HeroSection from "../../../components/HeroSection";
 import Section from "../../../components/AboutUsPage/Section";
 
 const AboutUs: React.FC = () => {
   return (
     <PageTemplate>
       {/* Hero Section */}
-      <HeroSection />
+      <HeroSection
+        title="About Us"
+        description="Learn more about us!"
+      />
 
       {/* Introduction Section */}
       <Section

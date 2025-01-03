@@ -21,7 +21,15 @@ const PersonCards: React.FC<PersonCardsProps> = ({ personCards, title }) => {
         width: "70%",
       }}
     >
-      <Typography variant="h3" component="h1" sx={{ textAlign: "center" }}>
+      <Typography
+        variant="h3"
+        component="h1"
+        sx={{
+          textAlign: "center",
+          fontFamily: "monospace",
+          mb: "20px",
+          }}
+        >
         {title}
       </Typography>
       <Grid container spacing={4}>
@@ -56,6 +64,7 @@ const PersonCards: React.FC<PersonCardsProps> = ({ personCards, title }) => {
                 marginTop: "0.5rem",
                 textAlign: "center",
                 fontWeight: "bold",
+                fontFamily: "monospace",
               }}
             >
               {card.name}

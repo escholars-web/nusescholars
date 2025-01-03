@@ -1,4 +1,5 @@
-import Profile from "./Profile";
+// import Profile from "./Profile";
+import Profile_v2 from "./Profile_v2";
 import database from "../../src/data/database.json"
 
 interface ProfileBuilderProps {
@@ -16,7 +17,7 @@ export default function ProfileBuilder({
   const data = database[batch][major][name];
 
   return (
-    <Profile
+    <Profile_v2
       name={data.name}
       academicYear={data.admit_year}
       course={data.major}
