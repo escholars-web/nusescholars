@@ -134,7 +134,23 @@ const AdminPage = () => {
 
   return (
     <>
-      <style>{styles}</style>
+      {/* <style jsx global>{styles}</style> */}
+      <style jsx global>{`
+        .admin-container { max-width: 800px; margin: 2rem auto; padding: 2rem; border: 1px solid #eee; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .admin-container h1, .admin-container h2 { color: #333; margin-bottom: 1rem; }
+        .form-section { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #eee; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
+        .form-group input[type="text"], .form-group input[type="email"], .form-group input[type="url"], .form-group textarea, .form-group input[type="file"] { width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .form-group textarea { min-height: 100px; }
+        .button { background-color: #0070f3; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; margin-right: 0.5rem; }
+        .button:hover { background-color: #005bb5; }
+        .button-secondary { background-color: #666; }
+        .button-secondary:hover { background-color: #444; }
+        .message { margin-top: 1rem; padding: 1rem; border-radius: 4px; }
+        .message.success { background-color: #e6fffa; border: 1px solid #b2f5ea; color: #234e52; }
+        .message.error { background-color: #fff5f5; border: 1px solid #fed7d7; color: #c53030; }
+      `}</style>
       <div className="admin-container">
         <h1>E-Scholars Admin Panel</h1>
         {message && <div className={`message ${jsonData ? 'success' : 'error'}`}>{message}</div>}
