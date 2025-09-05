@@ -1,33 +1,23 @@
-// import Profile from "./Profile";
 import Profile_v2 from "./Profile_v2";
-import database from "../../src/data/database.json";
 
 interface ProfileBuilderProps {
-  name: string;
-  batch: string;
-  major: string;
+  scholar: any; // you can create a proper type for scholar too
 }
 
-export default function ProfileBuilder({
-  name,
-  batch,
-  major,
-}: ProfileBuilderProps) {
-  //@ts-expect-error ignore to let names be processed as string
-  const data = database[batch][major][name];
-
+export default function ProfileBuilder({ scholar }: ProfileBuilderProps) {
+  // directly use scholar object
   return (
     <Profile_v2
-      name={data.name}
-      academicYear={data.admit_year}
-      course={data.major}
-      introduction={data.writeup}
-      interestsAndHobbies={data.interests_hobbies}
-      notableAchievements={data.notable_achievements}
-      imageUrl={`/images/${batch}/${name}.jpg`}
-      linkedInUrl={data.linkedin_url}
-      instagramUrl={data.instagram_url}
-      githubUrl={data.github_url}
+      name={scholar.name}
+      academicYear={scholar.admit_year ?? ""}
+      course={scholar.major ?? scholar.programs?.name ?? ""}
+      introduction={scholar.formatted_writeup ?? ""}
+      interestsAndHobbies={scholar.formatted_interests_hobbies ?? ""}
+      notableAchievements={scholar.formatted_achievements ?? ""}
+      imageUrl={`/images/${scholar.batches.code}/${scholar.slug}.jpg`}
+      linkedInUrl={scholar.linkedin_url ?? ""}
+      instagramUrl={scholar.instagram_url ?? ""}
+      githubUrl={scholar.github_url ?? ""}
     />
   );
 }
