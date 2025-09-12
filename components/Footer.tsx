@@ -65,7 +65,7 @@ const Footer: React.FC = () => {
         >
           Connect with Us!
         </Typography>
-        <Link href="https://www.instagram.com/nusescholars" passHref>
+        <Link href="https://www.instagram.com/nusdescholars" passHref>
           <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <IconButton sx={{ color: "white" }} aria-label="Instagram">
               <InstagramIcon />
@@ -77,7 +77,7 @@ const Footer: React.FC = () => {
                 "&:hover": { color: "gray" },
               }}
             >
-              @nusescholars
+              @nusdescholars
             </Typography>
           </Box>
         </Link>
