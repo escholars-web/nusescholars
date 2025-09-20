@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
   // Links for navigation
   const navLinks = [
     { label: "About Us", href: "/about-us" },
-    { label: "Humans of De-Scholars", href: "/humans-of-descholars" },
+    { label: "Humans of D&E-Scholars", href: "/humans-of-descholars" },
     { label: "Resources", href: "/resources" },
   ];
 
@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
               color: "inherit",
             }}
           >
-            NUS DE-SCHOLARS
+            NUS D&E-SCHOLARS
           </Typography>
         </Link>
 

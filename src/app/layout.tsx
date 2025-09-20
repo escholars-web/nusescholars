@@ -16,8 +16,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "DE-Scholars",
-  description: "Created by the DE-Scholars Committee (with love)",
+  title: "D&E-Scholars",
+  description: "Created by the D&E-Scholars Committee (with love)",
   icons: {
     icon: [
       {
