@@ -22,9 +22,9 @@ const LandingPage: React.FC = () => {
     <>
       <LandingImage
         imageUrl="/images/orientation2024.jpg"
-        title="Welcome to the D&E-Scholars webpage!"
+        title="Welcome to the D&E-Scholars' webpage!"
       />
-      <LandingDescription text="Welcome to nusdescholars.com! This is an informal website run by the D&E-Scholars' Student Committee. Through this website, we hope to showcase what goes on in the life of a DE-Scholar. We also hope to provide a wide variety of information on the programme, from the academic aspects of the programme to the administrative aspects of applying to the programme!" />
+      <LandingDescription text="Welcome to nusdescholars.com! This is an informal website run by the D&E-Scholars' Student Committee. Through this website, we hope to showcase what goes on in the life of a D&E-Scholar. We also hope to provide a wide variety of information on the programme, from the academic aspects of the programme to the administrative aspects of applying to the programme!" />
       <EventsCarousel />
       <LandingGalleryLinks galleryItems={galleryItems} />
     </>
