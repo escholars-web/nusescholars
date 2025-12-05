@@ -14,7 +14,8 @@ import InformationBox from "./InformationBox";
 interface ProfileProps {
   name: string;
   academicYear: string;
-  course: string;
+  bachelors: string;
+  masters?: string | null;
   introduction: string;
   interestsAndHobbies: string;
   notableAchievements: string;
@@ -28,7 +29,8 @@ interface ProfileProps {
 const Profile: React.FC<ProfileProps> = ({
   name,
   academicYear,
-  course,
+  bachelors,
+  masters,
   introduction,
   interestsAndHobbies,
   notableAchievements,
@@ -77,9 +79,10 @@ const Profile: React.FC<ProfileProps> = ({
           </Typography>
           
           <Typography variant="body1" sx={{ mb: 2, fontFamily: "monospace" }}>
-            I'm a {course} student from Batch {academicYear}.
-            {/* <br />
-            Currently, I am working on... (customizable intro). */}
+            I'm a {bachelors} student from Batch {academicYear}. 
+            {masters && (
+              <> Now, I'm pursuing my {masters}.</>
+            )}
           </Typography>
           {/* <Typography variant="body1" sx={{ fontFamily: "monospace" }}>
             You can talk to me about... (customized topics).

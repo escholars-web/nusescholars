@@ -568,7 +568,7 @@
                 "name": "Jin Zihan",
                 "admit_year": "AY23/24",
                 "academic_career": "E-Scholars Undergraduate",
-                "bachelors": "Multidisciplinary Programme (Computer Engineering)",
+                "bachelors": "Computer Engineering",
                 "masters": null,
                 "writeup": "Hello! I am Zihan, a Year 3 Computer Engineering student with a specialisation in Advanced Electronics. In my free time I enjoy listening to music and reading :)",
                 "picture_url": "https://nusu-my.sharepoint.com/personal/e1354315_u_nus_edu/Documents/Apps/Microsoft%20Forms/DE-Scholars%20Census%20AY2425%20(Copy)/Upload%20a%20picture%20of%20yourself/Jin%20Zihan_photo_Zihan%20Jin.jpg",
@@ -583,7 +583,7 @@
                 "name": "Che Luyang",
                 "admit_year": "AY23/24",
                 "academic_career": "E-Scholars Undergraduate",
-                "bachelors": "Multidisciplinary Programme (Computer Engineering)",
+                "bachelors": "Computer Engineering",
                 "masters": null,
                 "writeup": "Hello there! I'm Luyang. I'm currently a final year E-Scholar studying computer engineering, and I'm also currently doing the Advanced Electronics specialisation. I have a strong life-long interest for tinkering and building things, be it with electronics or other mediums like wood and leather. I have a love-hate relationship with the outdoors, in which I love cycling around nature, going hiking, and taking casual walks with loved ones, but I also hate mosquitoes, getting blisters, and extremely humid weather.",
                 "picture_url": "https://nusu-my.sharepoint.com/personal/e1354315_u_nus_edu/Documents/Apps/Microsoft%20Forms/DE-Scholars%20Census%20AY2425%20(Copy)/Upload%20a%20picture%20of%20yourself/RI000660_Luyang%20Che.JPG",
@@ -1075,7 +1075,7 @@
                 "instagram_url": null,
                 "github_url": "https://github.com/xelisce",
                 "last_updated": "2025-12-05",
-                "bachelors": "Multidisciplinary Programme (Computer Engineering)",
+                "bachelors": "Computer Engineering",
                 "masters": null
             },
             "jordan-tan": {
@@ -1120,7 +1120,7 @@
                 "instagram_url": null,
                 "github_url": "https://github.com/rayan-wong",
                 "last_updated": "2025-12-05",
-                "bachelors": "Multidisciplinary Programme (Computer Engineering)",
+                "bachelors": "Computer Engineering",
                 "masters": null
             },
             "ryan-ng": {
@@ -1180,7 +1180,7 @@
                 "instagram_url": null,
                 "github_url": null,
                 "last_updated": "2025-12-05",
-                "bachelors": "Multidisciplinary Programme (Computer Engineering)",
+                "bachelors": "Computer Engineering",
                 "masters": null
             },
             "tan-zheng-jie": {
@@ -1197,21 +1197,6 @@
                 "last_updated": "2024-12-30",
                 "bachelors": "Computer Engineering",
                 "masters": null
-            },
-            "ryan-ng-jingkai": {
-                "name": "Ryan Ng Jingkai",
-                "admit_year": "AY24/25",
-                "academic_career": "E-Scholars Undergraduate",
-                "bachelors": "Multidisciplinary Programme (Computer Engineering)",
-                "masters": null,
-                "writeup": "hi im ryan and im passionate about embedded systems!",
-                "picture_url": null,
-                "notable_achievements": null,
-                "interests_hobbies": "mahjong\nfried chimken\novercooked",
-                "linkedin_url": "https://www.linkedin.com/in/ryanngjk",
-                "instagram_url": null,
-                "github_url": "github.com/goodguyryan",
-                "last_updated": "2025-12-05"
             }
         },
         "CHE": {
@@ -1356,21 +1341,6 @@
                 "github_url": null,
                 "last_updated": "2025-12-05"
             },
-            "chen-zhi-yi-gary": {
-                "name": "Chen Zhi Yi Gary",
-                "admit_year": "AY25/26",
-                "academic_career": "E-Scholars Undergraduate",
-                "bachelors": "Mechanical Engineering",
-                "masters": null,
-                "writeup": "Hi I'm Gary from Mechanical Engineering!",
-                "picture_url": null,
-                "notable_achievements": null,
-                "interests_hobbies": null,
-                "linkedin_url": "https://www.linkedin.com/in/garyczy",
-                "instagram_url": null,
-                "github_url": null,
-                "last_updated": "2025-12-05"
-            },
             "cheng-zhi-en-aaron": {
                 "name": "Cheng Zhi-En Aaron",
                 "admit_year": "AY25/26",
@@ -1383,21 +1353,6 @@
                 "interests_hobbies": "Aviation, Photography",
                 "linkedin_url": "www.linkedin.com/in/aaron-cheng-26308b205",
                 "instagram_url": "https://www.instagram.com/aaron.c.ze/",
-                "github_url": null,
-                "last_updated": "2025-12-05"
-            },
-            "wang-yizhang": {
-                "name": "Wang Yizhang",
-                "admit_year": "AY25/26",
-                "academic_career": "E-Scholars Undergraduate",
-                "bachelors": "Mechanical Engineering",
-                "masters": null,
-                "writeup": "i am a dude",
-                "picture_url": null,
-                "notable_achievements": null,
-                "interests_hobbies": null,
-                "linkedin_url": null,
-                "instagram_url": null,
                 "github_url": null,
                 "last_updated": "2025-12-05"
             }
@@ -1433,21 +1388,6 @@
                 "github_url": null,
                 "last_updated": "2025-12-05"
             },
-            "surya-nayar": {
-                "name": "Surya Nayar",
-                "admit_year": "AY25/26",
-                "academic_career": "E-Scholars Undergraduate",
-                "bachelors": "Electrical Engineering",
-                "masters": null,
-                "writeup": "Hi! I'm an undergraduate pursuing a degree in electrical engineering with a second major in mathematics. I've always been interested in finding out how the devices we use work at their most fundamental level, and I hope to use my time at NUS to probe the internals of both electrical systems and fundamental truths.",
-                "picture_url": null,
-                "notable_achievements": null,
-                "interests_hobbies": null,
-                "linkedin_url": null,
-                "instagram_url": null,
-                "github_url": null,
-                "last_updated": "2025-12-05"
-            },
             "chloe-ong-su-neng": {
                 "name": "Chloe Ong Su Neng",
                 "admit_year": "AY25/26",
@@ -1475,21 +1415,6 @@
                 "interests_hobbies": "Photography\nCooking",
                 "linkedin_url": "https://sg.linkedin.com/in/keanric-choy-a0a45412b",
                 "instagram_url": "https://www.instagram.com/keanric/",
-                "github_url": null,
-                "last_updated": "2025-12-05"
-            },
-            "yu-qi-yuan": {
-                "name": "Yu Qi Yuan",
-                "admit_year": "AY25/26",
-                "academic_career": "E-Scholars Undergraduate",
-                "bachelors": "Electrical Engineering",
-                "masters": null,
-                "writeup": "Hello, I am a year one Electrical Engineering student slowly figuring things out and am striving to start something of my own one day. In my free time I love to keep fit and enrich my mind with a good book :)",
-                "picture_url": null,
-                "notable_achievements": null,
-                "interests_hobbies": "Badminton\nPowerlifting\nNon-fiction",
-                "linkedin_url": "https://www.linkedin.com/in/qi-yuan-yu-98193314a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-                "instagram_url": null,
                 "github_url": null,
                 "last_updated": "2025-12-05"
             }
@@ -1586,36 +1511,6 @@
                 "instagram_url": "https://www.instagram.com/yileeming",
                 "github_url": "https://github.com/mingyix",
                 "last_updated": "2025-12-05"
-            },
-            "loh-zijun-jody": {
-                "name": "Loh Zijun Jody",
-                "admit_year": "AY25/26",
-                "academic_career": "E-Scholars Undergraduate",
-                "bachelors": "Industrial & Systems Engineering",
-                "masters": null,
-                "writeup": "Hello!! I'm Jody, a Y1 Industrial and Systems Engineering student with a second major in Management. I'm staying at Ridge View Residential College and I am quite interested in the topic of sustainability - caring for the environment and reducing wastage. My family is my number 1 priority and I love spending quality time with them as much as possible!",
-                "picture_url": "https://nusu-my.sharepoint.com/personal/e1354315_u_nus_edu/Documents/Apps/Microsoft%20Forms/DE-Scholars%20Census%20AY2425%20(Copy)/Upload%20a%20picture%20of%20yourself/IMG_6704_Zijun%20Jody%20Loh.jpeg",
-                "notable_achievements": "Vice-Chairperson of CCA in JC\nDance Performer for the opening segment of National Day Parade 2023\nProduced and edited videos for events in secondary school",
-                "interests_hobbies": "Dancing\nCycling\nCheerleading",
-                "linkedin_url": "www.linkedin.com/in/jody-loh-557195347",
-                "instagram_url": "https://www.instagram.com/jodyloh/",
-                "github_url": null,
-                "last_updated": "2025-12-05"
-            },
-            "sim-hong-wei": {
-                "name": "Sim Hong Wei",
-                "admit_year": "AY25/26",
-                "academic_career": "E-Scholars Undergraduate",
-                "bachelors": "Industrial & Systems Engineering",
-                "masters": null,
-                "writeup": "Hi! I'm Hong Wei, a year one student majoring in Industrial and Systems Engineering under the D/E-Scholars Programme. While I am interested in optimization and systems thinking, I am open to many different fields of study!",
-                "picture_url": null,
-                "notable_achievements": null,
-                "interests_hobbies": "Cycling and cooking!",
-                "linkedin_url": "https://www.linkedin.com/in/hw-undefined-2aa828263?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-                "instagram_url": "https://www.instagram.com/hong.weiiii?igsh=NW1jeXpqaHE4YW03",
-                "github_url": null,
-                "last_updated": "2025-12-05"
             }
         },
         "MLE": {
@@ -1685,7 +1580,7 @@
                 "name": "Lim Sin",
                 "admit_year": "AY25/26",
                 "academic_career": "E-Scholars Undergraduate",
-                "bachelors": "Multidisciplinary Programme (Computer Engineering)",
+                "bachelors": "Computer Engineering",
                 "masters": null,
                 "writeup": "Hello! I am Lim Sin, currently studying Computer Engineering. I love to tinker and explore new things. I plan to pursue internet of things, using technology to solve problems. My interests include watching all sorts of shows and catching up on some good Korean entertainment.",
                 "picture_url": "https://nusu-my.sharepoint.com/personal/e1354315_u_nus_edu/Documents/Apps/Microsoft%20Forms/DE-Scholars%20Census%20AY2425%20(Copy)/Upload%20a%20picture%20of%20yourself/IMG_4925_Sin%20Lim.jpeg",
@@ -1700,7 +1595,7 @@
                 "name": "Yuan Wenxi",
                 "admit_year": "AY25/26",
                 "academic_career": "E-Scholars Undergraduate",
-                "bachelors": "Multidisciplinary Programme (Computer Engineering)",
+                "bachelors": "Computer Engineering",
                 "masters": null,
                 "writeup": "Hello! I'm Wenxi, a y1 student studying Computer Engineering and Chemistry! I am currently staying in RC4 and some of my hobbies include playing volleyball and baking (though I burn them half the time :( ). I hope to pursue something related to both courses in the future, such as computational chemistry research. For now, I hope to participate in more activities outside of class such as hackathons.",
                 "picture_url": "https://nusu-my.sharepoint.com/personal/e1354315_u_nus_edu/Documents/Apps/Microsoft%20Forms/DE-Scholars%20Census%20AY2425%20(Copy)/Upload%20a%20picture%20of%20yourself/Wenxi%20pic_Wenxi%20Yuan.jpeg",
@@ -1715,7 +1610,7 @@
                 "name": "Ong Yik How Howard",
                 "admit_year": "AY25/26",
                 "academic_career": "E-Scholars Undergraduate",
-                "bachelors": "Multidisciplinary Programme (Computer Engineering)",
+                "bachelors": "Computer Engineering",
                 "masters": null,
                 "writeup": "I'm the weeb rhythm gamer that got into tech so that I can create anime girls. That's why I came into computer engineering, and also why I'm in calibur. Also\n(Don't include this, I'll get cancelled or maybe idk)\nWhere's my dommy mommy goth gf? See you guys in 10 years when I create Restia Restroom Inc.\nAlso I'm a discord mod.",
                 "picture_url": "https://nusu-my.sharepoint.com/personal/e1354315_u_nus_edu/Documents/Apps/Microsoft%20Forms/DE-Scholars%20Census%20AY2425%20(Copy)/Upload%20a%20picture%20of%20yourself/20250219_151347_Howard%20Ong.jpg",
@@ -1730,7 +1625,7 @@
                 "name": "Amir Izaaz Bin Mohamad Faiz",
                 "admit_year": "AY25/26",
                 "academic_career": "E-Scholars Undergraduate",
-                "bachelors": "Multidisciplinary Programme (Computer Engineering)",
+                "bachelors": "Computer Engineering",
                 "masters": null,
                 "writeup": "I’m a Year 1 Computer Engineering Student under the E-Scholars Programme. In my free time, I enjoy taking photos and playing indie games. My dream job would be to work at AMD or NVIDIA on graphics hardware.",
                 "picture_url": "https://nusu-my.sharepoint.com/personal/e1354315_u_nus_edu/Documents/Apps/Microsoft%20Forms/DE-Scholars%20Census%20AY2425%20(Copy)/Upload%20a%20picture%20of%20yourself/ba41584f-4500-41d9-bbdb-408687744fa1_Izaaz%20Mohamad%20Faiz.jpeg",
@@ -1745,7 +1640,7 @@
                 "name": "Kiefer Ong Xian Yao",
                 "admit_year": "AY25/26",
                 "academic_career": "E-Scholars Undergraduate",
-                "bachelors": "Multidisciplinary Programme (Computer Engineering)",
+                "bachelors": "Computer Engineering",
                 "masters": null,
                 "writeup": "Hi, I'm Kiefer, a Y1 CEG student who loves all things tech and finance. When I'm not studying, you will either catch me hooping or kicking ball!",
                 "picture_url": "https://nusu-my.sharepoint.com/personal/e1354315_u_nus_edu/Documents/Apps/Microsoft%20Forms/DE-Scholars%20Census%20AY2425%20(Copy)/Upload%20a%20picture%20of%20yourself/Kiefer_Draco_Kiefer%20Ong.JPG",
@@ -1760,7 +1655,7 @@
                 "name": "Siddharth S Arumuganainar",
                 "admit_year": "AY25/26",
                 "academic_career": "E-Scholars Undergraduate",
-                "bachelors": "Multidisciplinary Programme (Computer Engineering)",
+                "bachelors": "Computer Engineering",
                 "masters": null,
                 "writeup": "Hi! I'm Sid, a freshie from CEG, though I'm more interested in software than hardware. I am especially intrigued in learning about and implementing AI. In my free time I enjoy cycling, playing basketball and binging netflix.",
                 "picture_url": "https://nusu-my.sharepoint.com/personal/e1354315_u_nus_edu/Documents/Apps/Microsoft%20Forms/DE-Scholars%20Census%20AY2425%20(Copy)/Upload%20a%20picture%20of%20yourself/WhatsApp%20Image%202025-08-26%20at%2002.18.38_Siddharth%20S%20Arumugan.jpeg",
@@ -1928,7 +1823,7 @@
                 "last_updated": "2025-12-05"
             }
         },
-        "ISD": {
+        "DS": {
             "wong-shue-rou": {
                 "name": "Wong Shue Rou",
                 "admit_year": "AY25/26",

@@ -22,7 +22,8 @@ export default function ProfileBuilder({
     <Profile_v2
       name={data.name}
       academicYear={data.admit_year}
-      course={data.major}
+      bachelors={data.bachelors}
+      masters={data.masters}
       introduction={data.writeup}
       interestsAndHobbies={data.interests_hobbies}
       notableAchievements={data.notable_achievements}

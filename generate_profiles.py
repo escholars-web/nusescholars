@@ -3,9 +3,9 @@
 Generate Next.js profile routes from database.json.
 
 Usage:
-    python generate_profiles.py \
-        --json-path src/data/database.json \
-        --out-dir src/app/humans-of-descholars
+python generate_profiles.py \
+    --json-path src/data/database.json \
+    --out-dir src/app/humans-of-descholars
 """
 
 import argparse
