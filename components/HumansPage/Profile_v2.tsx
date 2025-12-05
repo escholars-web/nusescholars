@@ -22,6 +22,7 @@ interface ProfileProps {
   linkedInUrl: string;
   instagramUrl: string;
   githubUrl: string;
+  lastUpdated: string;
 }
 
 const Profile: React.FC<ProfileProps> = ({
@@ -35,6 +36,7 @@ const Profile: React.FC<ProfileProps> = ({
   linkedInUrl,
   instagramUrl,
   githubUrl,
+  lastUpdated,
 }) => {
   const showConnectWithMe: boolean = !!(
     linkedInUrl ||
@@ -71,16 +73,20 @@ const Profile: React.FC<ProfileProps> = ({
             sx={{ fontFamily: "monospace", textAlign: "left" }}
             gutterBottom
           >
-            Hi! I’m {name}
+            Hi! I'm {name}
           </Typography>
+          
           <Typography variant="body1" sx={{ mb: 2, fontFamily: "monospace" }}>
-            I study {course} as a {academicYear} student.
+            I'm a {course} student from Batch {academicYear}.
             {/* <br />
             Currently, I am working on... (customizable intro). */}
           </Typography>
           {/* <Typography variant="body1" sx={{ fontFamily: "monospace" }}>
             You can talk to me about... (customized topics).
           </Typography> */}
+          <Typography variant="caption" sx={{ mb: 2, fontFamily: "monospace", color: "gray" }}>
+            Last updated: {lastUpdated}
+          </Typography>
         </Box>
       </Box>
 
