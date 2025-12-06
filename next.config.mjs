@@ -1,16 +1,11 @@
-const nextConfig = {
-  reactStrictMode: true,
-};
-
-export default nextConfig;
-
-// To pass nextjs build, to be removed later
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
+
+  // TEMPORARY: Disable ESLint during build
   eslint: {
     ignoreDuringBuilds: true,
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
