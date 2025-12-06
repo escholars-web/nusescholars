@@ -81,7 +81,7 @@ const Profile: React.FC<ProfileProps> = ({
           <Typography variant="body1" sx={{ mb: 2, fontFamily: "monospace" }}>
             I'm a {bachelors} student from Batch {academicYear}. 
             {masters && (
-              <> Now, I'm pursuing my {masters}.</>
+              <> Additionally, I'm pursuing my {masters}.</>
             )}
           </Typography>
           {/* <Typography variant="body1" sx={{ fontFamily: "monospace" }}>
