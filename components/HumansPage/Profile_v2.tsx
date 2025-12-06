@@ -14,7 +14,8 @@ import InformationBox from "./InformationBox";
 interface ProfileProps {
   name: string;
   academicYear: string;
-  course: string;
+  bachelors: string;
+  masters?: string | null;
   introduction: string;
   interestsAndHobbies: string;
   notableAchievements: string;
@@ -22,12 +23,14 @@ interface ProfileProps {
   linkedInUrl: string;
   instagramUrl: string;
   githubUrl: string;
+  lastUpdated: string;
 }
 
 const Profile: React.FC<ProfileProps> = ({
   name,
   academicYear,
-  course,
+  bachelors,
+  masters,
   introduction,
   interestsAndHobbies,
   notableAchievements,
@@ -35,6 +38,7 @@ const Profile: React.FC<ProfileProps> = ({
   linkedInUrl,
   instagramUrl,
   githubUrl,
+  lastUpdated,
 }) => {
   const showConnectWithMe: boolean = !!(
     linkedInUrl ||
@@ -71,16 +75,21 @@ const Profile: React.FC<ProfileProps> = ({
             sx={{ fontFamily: "monospace", textAlign: "left" }}
             gutterBottom
           >
-            Hi! I’m {name}
+            Hi! I'm {name}
           </Typography>
+          
           <Typography variant="body1" sx={{ mb: 2, fontFamily: "monospace" }}>
-            I study {course} as a {academicYear} student.
-            {/* <br />
-            Currently, I am working on... (customizable intro). */}
+            I'm a {bachelors} student from Batch {academicYear}. 
+            {masters && (
+              <> Additionally, I'm pursuing my {masters}.</>
+            )}
           </Typography>
           {/* <Typography variant="body1" sx={{ fontFamily: "monospace" }}>
             You can talk to me about... (customized topics).
           </Typography> */}
+          <Typography variant="caption" sx={{ mb: 2, fontFamily: "monospace", color: "gray" }}>
+            Last updated: {lastUpdated}
+          </Typography>
         </Box>
       </Box>
 

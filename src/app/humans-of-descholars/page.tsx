@@ -6,6 +6,11 @@ export default function Page() {
   const baseLink = "/humans-of-descholars/";
   const batchItems = [
     {
+      title: "AY25/26",
+      image: "/images/batch-pics/AY2526-EScholars.jpg",
+      link: baseLink + "ay25-26",
+    },
+    {
       title: "AY24/25",
       image: "/images/batch-pics/AY2425-EScholars.jpg",
       link: baseLink + "ay24-25",

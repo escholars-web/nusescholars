@@ -1,4 +1,6 @@
-// import Profile from "./Profile";
+// components/HumansPage/ProfileBuilder.tsx
+// Build individual profile page for student based on database.json
+
 import Profile_v2 from "./Profile_v2";
 import database from "../../src/data/database.json";
 
@@ -20,7 +22,8 @@ export default function ProfileBuilder({
     <Profile_v2
       name={data.name}
       academicYear={data.admit_year}
-      course={data.major}
+      bachelors={data.bachelors}
+      masters={data.masters}
       introduction={data.writeup}
       interestsAndHobbies={data.interests_hobbies}
       notableAchievements={data.notable_achievements}
@@ -28,6 +31,7 @@ export default function ProfileBuilder({
       linkedInUrl={data.linkedin_url}
       instagramUrl={data.instagram_url}
       githubUrl={data.github_url}
+      lastUpdated={data.last_updated}
     />
   );
 }
