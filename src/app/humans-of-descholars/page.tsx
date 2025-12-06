@@ -7,7 +7,7 @@ export default function Page() {
   const batchItems = [
     {
       title: "AY25/26",
-      image: "/images/batch-pics/AY2526-EScholars.jpg",
+      image: "/images/batch-pics/AY2526-Escholars.jpg",
       link: baseLink + "ay25-26",
     },
     {
