@@ -22,7 +22,7 @@ const LinkItems: React.FC<LinksProps> = ({ linkItems }) => {
     >
       <Grid container spacing={4}>
         {linkItems.map((item, index) => (
-          <Grid item xs={12} sm={12} md={6} key={index}>
+          <Grid size={{ xs: 12, sm: 12, md: 6 }} key={index}>
             <Box
               component="a"
               href={item.link}
