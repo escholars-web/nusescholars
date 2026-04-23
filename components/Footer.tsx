@@ -8,7 +8,7 @@ import Link from "next/link";
 const Footer: React.FC = () => {
   const navLinks = [
     { label: "About Us", href: "/about-us" },
-    { label: "Humans of DE-Scholars", href: "/humans-of-descholars" },
+    { label: "Humans of D&E-Scholars", href: "/humans-of-descholars" },
     { label: "Resources", href: "/resources" },
   ];
 
@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
               "&:hover": { color: "gray" }, // Add hover effect
             }}
           >
-            NUS DE-SCHOLARS
+            NUS D&E-SCHOLARS
           </Typography>
         </Link>
         {navLinks.map((link) => (

@@ -1,6 +1,6 @@
-# NUS DE Scholars website repo
+# NUS D&E-Scholars' website repo
 
-Welcome to the NUS DE Scholars website repo! You may find our (WIP) site [here](https://nusescholars.vercel.app/)
+Welcome to the NUS D&E-Scholars' website repo! You may find our (WIP) site [here](https://nusescholars.vercel.app/)
 
 ## Getting started
 

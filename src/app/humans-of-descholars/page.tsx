@@ -35,8 +35,8 @@ export default function Page() {
   return (
     <PageTemplate>
       <HeroSection
-        title="Humans of DE-Scholars"
-        description="Welcome to the Humans of DE-scholars page! Select the batch below to
+        title="Humans of D&E-Scholars"
+        description="Welcome to the Humans of D&E-Scholars page! Select the batch below to
         find out more about us :)"
       />
       <LinkItems linkItems={batchItems} />
