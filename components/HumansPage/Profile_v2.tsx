@@ -63,10 +63,12 @@ const Profile: React.FC<ProfileProps> = ({
           <Image
             src={imageUrl}
             alt={`${name}'s photo`}
-            objectFit="cover"
             width={225}
             height={281}
-            style={{ borderRadius: 8 }}
+            style={{ 
+              borderRadius: 8, 
+              objectFit: 'cover' 
+            }}
           />
         </Box>
         <Box sx={{ ml: 4, flexGrow: 1 }}>

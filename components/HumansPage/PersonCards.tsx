@@ -57,7 +57,7 @@ const PersonCards: React.FC<PersonCardsProps> = ({ personCards, title }) => {
             ) : (
                 <Grid container spacing={4}>
                     {personCards.map((card, index) => (
-                        <Grid item xs={12} sm={6} md={3} key={index}>
+                        <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
                             <Box
                                 component="a"
                                 href={card.link}

@@ -23,7 +23,7 @@ const LandingGalleryLinks: React.FC<LandingGalleryLinksProps> = ({
     >
       <Grid container spacing={4}>
         {galleryItems.map((item, index) => (
-          <Grid item xs={12} sm={6} key={index}>
+          <Grid size={{ xs: 12, sm: 6}} key={index}>
             <Box
               component="a"
               href={item.link}
