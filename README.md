@@ -48,18 +48,37 @@ This will set up the necessary packages that you need.
 
 # Deploying
 
-From `main`, with your changes saved:
+`main` is protected and rejects direct pushes, so every change goes out through a pull
+request. Start a branch and run the deploy command on it:
+
+```
+npm run deploy -- --branch my-change "what you changed"
+```
+
+Already on a branch? Drop the flag:
 
 ```
 npm run deploy -- "what you changed"
 ```
 
-That formats the code, builds it locally, then commits and pushes to `main`. The push is
-what deploys: GitHub Actions publishes to GitHub Pages and Vercel redeploys the same commit.
-If the build fails, nothing is committed or pushed, so you fix it and run the command again.
+That formats the code, builds it locally, commits everything, pushes the branch, and opens
+a pull request against `main`. If the build fails, nothing is committed or pushed, so you
+fix it and run the command again.
+
+Merging the pull request is what deploys. GitHub Actions publishes to GitHub Pages and
+Vercel redeploys the same commit. Merge it in the browser, or run:
+
+```
+gh pr merge --squash --delete-branch
+```
 
 The commit message is optional (`npm run deploy` on its own uses a dated one), and
 `npm run deploy -- --skip-build "message"` skips the local build if you are in a hurry.
 
-The command refuses to run from any branch other than `main` — for feature branches, push
-the branch and open a pull request as usual.
+Opening pull requests from the terminal needs the GitHub CLI (`brew install gh`, then
+`gh auth login`). Without it the command still pushes your branch and prints a link to
+open the pull request in the browser.
+
+If the build fails with `ENOTEMPTY` on a path inside `.next`, stop your `next dev` server
+and try again. A running dev server writes into `.next` while the build is trying to
+clear it.
