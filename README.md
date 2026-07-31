@@ -45,3 +45,21 @@ git bash ./requirements.sh
 ```
 
 This will set up the necessary packages that you need.
+
+# Deploying
+
+From `main`, with your changes saved:
+
+```
+npm run deploy -- "what you changed"
+```
+
+That formats the code, builds it locally, then commits and pushes to `main`. The push is
+what deploys: GitHub Actions publishes to GitHub Pages and Vercel redeploys the same commit.
+If the build fails, nothing is committed or pushed, so you fix it and run the command again.
+
+The commit message is optional (`npm run deploy` on its own uses a dated one), and
+`npm run deploy -- --skip-build "message"` skips the local build if you are in a hurry.
+
+The command refuses to run from any branch other than `main` — for feature branches, push
+the branch and open a pull request as usual.

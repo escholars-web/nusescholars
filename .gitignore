@@ -1,7 +1,39 @@
+# Dependencies
 node_modules
+
+# Build output and caches
 .next
-.idea
 out
-*.xlsx
+.turbo
+.vercel
+*.tsbuildinfo
+coverage
+
+# Secrets and local environment
 .env
+.env.local
+.env.*.local
+*.pem
+
+# Editor and tooling config that is local to one machine
+.claude
+.idea
+.vscode
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python data pipeline
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# Source spreadsheets, the JSON in src/data is what ships
+*.xlsx
+
+# macOS
 .DS_Store

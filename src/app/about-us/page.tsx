@@ -29,7 +29,7 @@ const AboutUs: React.FC = () => {
       {/* Overseas Experience Section */}
       <Section
         title="Overseas Experience"
-        description="The overseas experience is one of the key features of the E-Scholars programme. E-Scholars enjoy priority consideration for the Student Exchange Programme (SEP) and NUS Overseas College (NOC) programme, which are generously subsidised under the scholarship. Furthermore, E-Scholars enjoy subsidised Summer and Winter Exchange programmes – a perk on par with the NUS Global Merit Scholarship!"
+        description="The overseas experience is one of the key features of the E-Scholars programme. E-Scholars enjoy priority consideration for the Student Exchange Programme (SEP) and NUS Overseas College (NOC) programme, which are generously subsidised under the scholarship. Furthermore, E-Scholars enjoy subsidised Summer and Winter Exchange programmes, a perk on par with the NUS Global Merit Scholarship!"
         image="/images/about-us/travels.png"
       />
 

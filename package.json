@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d pages/out"
+    "deploy": "node scripts/deploy.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

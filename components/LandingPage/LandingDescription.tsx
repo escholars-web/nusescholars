@@ -1,5 +1,4 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
 
 interface LandingDescriptionProps {
   text: string; // Text to display in the description
@@ -7,21 +6,13 @@ interface LandingDescriptionProps {
 
 const LandingDescription: React.FC<LandingDescriptionProps> = ({ text }) => {
   return (
-    <Box
-      sx={{
-        width: "70%",
-        margin: "0 auto",
-        padding: "2rem 1rem",
-        textAlign: "center",
-      }}
-    >
-      <Typography
-        variant="body1"
-        sx={{ fontSize: "1.2rem", lineHeight: "1.8" }}
-      >
-        {text}
-      </Typography>
-    </Box>
+    <section className="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6">
+      <p className="text-xs font-bold uppercase tracking-[0.3em] text-nus-orange-700">
+        Welcome
+      </p>
+      <div className="mx-auto mt-3 h-1 w-12 rounded-full bg-nus-orange-500" />
+      <p className="mt-6 text-lg leading-8 text-slate-600">{text}</p>
+    </section>
   );
 };
 

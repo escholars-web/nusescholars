@@ -1,0 +1,176 @@
+{
+  "modules": [
+    {
+      "code": "CS1010E",
+      "title": "Programming Methodology",
+      "department": "Computing",
+      "units": 4,
+      "notes": [
+        {
+          "title": "Recursion and lists cheatsheet",
+          "url": "https://drive.google.com/drive/folders/example-cs1010e-cheatsheet",
+          "contributor": "DE-Scholars Committee",
+          "kind": "cheatsheet"
+        },
+        {
+          "title": "Past year practical exam walkthroughs",
+          "url": "https://drive.google.com/drive/folders/example-cs1010e-pe",
+          "contributor": "DE-Scholars Committee",
+          "kind": "past-papers"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "cs1010e-1",
+          "rating": 4,
+          "workload": 4,
+          "difficulty": 3,
+          "semester": "AY24/25 Sem 1",
+          "body": "Solid introduction to Python if you have never coded before. The weekly missions look small but they compound, so start them the day they are released instead of the night before. The practical exams are the real filter, and the only preparation that works is writing code under time pressure rather than reading solutions.",
+          "author": "DE-Scholars Committee",
+          "batch": "AY24/25",
+          "date": "2025-01-10"
+        },
+        {
+          "id": "cs1010e-2",
+          "rating": 3,
+          "workload": 4,
+          "difficulty": 4,
+          "semester": "AY24/25 Sem 1",
+          "body": "Came in with zero programming background and found the jump around recursion genuinely rough. Tutors are helpful if you actually go to consultations. Worth pairing with a study group early.",
+          "author": null,
+          "batch": "AY25/26",
+          "date": "2025-02-02"
+        }
+      ]
+    },
+    {
+      "code": "EG1311",
+      "title": "Design and Make",
+      "department": "College of Design and Engineering",
+      "units": 4,
+      "notes": [
+        {
+          "title": "Project report template and rubric breakdown",
+          "url": "https://drive.google.com/drive/folders/example-eg1311-report",
+          "contributor": "DE-Scholars Committee",
+          "kind": "template"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "eg1311-1",
+          "rating": 5,
+          "workload": 3,
+          "difficulty": 2,
+          "semester": "AY24/25 Sem 1",
+          "body": "Easily the most fun module in year one. You build something real with a team and the assessment rewards effort more than raw technical skill. The main risk is group dynamics, so agree on a meeting cadence in week one and keep a shared log of who is doing what.",
+          "author": "DE-Scholars Committee",
+          "batch": "AY24/25",
+          "date": "2025-01-12"
+        }
+      ]
+    },
+    {
+      "code": "MA1511",
+      "title": "Engineering Calculus",
+      "department": "Mathematics",
+      "units": 2,
+      "notes": [
+        {
+          "title": "Formula sheet and worked tutorial solutions",
+          "url": "https://drive.google.com/drive/folders/example-ma1511-notes",
+          "contributor": "DE-Scholars Committee",
+          "kind": "notes"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "ma1511-1",
+          "rating": 3,
+          "workload": 3,
+          "difficulty": 3,
+          "semester": "AY24/25 Sem 1",
+          "body": "Fast paced because it is a half module, so falling two lectures behind is genuinely hard to recover from. If you did H2 Math most of the first half is revision, and the multivariable section at the end is where people lose marks. Drill past year papers.",
+          "author": null,
+          "batch": "AY24/25",
+          "date": "2025-01-18"
+        }
+      ]
+    },
+    {
+      "code": "EE2026",
+      "title": "Digital Design",
+      "department": "Electrical and Computer Engineering",
+      "units": 4,
+      "notes": [
+        {
+          "title": "Verilog syntax reference and lab tips",
+          "url": "https://drive.google.com/drive/folders/example-ee2026-verilog",
+          "contributor": "DE-Scholars Committee",
+          "kind": "notes"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "ee2026-1",
+          "rating": 4,
+          "workload": 4,
+          "difficulty": 4,
+          "semester": "AY24/25 Sem 2",
+          "body": "The FPGA project is the highlight and the reason to take this seriously. Lab sessions move quickly, so read the lab manual before you turn up or you will spend the whole slot catching up. Debugging on hardware takes far longer than you plan for, so budget extra weeks.",
+          "author": "DE-Scholars Committee",
+          "batch": "AY23/24",
+          "date": "2025-05-20"
+        }
+      ]
+    },
+    {
+      "code": "ME2121",
+      "title": "Engineering Thermodynamics",
+      "department": "Mechanical Engineering",
+      "units": 4,
+      "notes": [
+        {
+          "title": "Thermo tables and cycle summary sheets",
+          "url": "https://drive.google.com/drive/folders/example-me2121-tables",
+          "contributor": "DE-Scholars Committee",
+          "kind": "cheatsheet"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "me2121-1",
+          "rating": 4,
+          "workload": 3,
+          "difficulty": 4,
+          "semester": "AY24/25 Sem 2",
+          "body": "Conceptually heavy in a way that rote memorisation does not survive. Once entropy clicks the rest of the module follows. Practise reading the steam tables quickly because the finals are tight on time.",
+          "author": null,
+          "batch": "AY23/24",
+          "date": "2025-05-28"
+        }
+      ]
+    },
+    {
+      "code": "CDE2000",
+      "title": "Creating Narratives",
+      "department": "College of Design and Engineering",
+      "units": 4,
+      "notes": [],
+      "reviews": [
+        {
+          "id": "cde2000-1",
+          "rating": 3,
+          "workload": 2,
+          "difficulty": 2,
+          "semester": "AY24/25 Sem 2",
+          "body": "Light on content and heavy on reflection writing, which some people love and others find frustrating. Attendance and participation carry a real chunk of the grade, so just turn up and speak. A good module to pair with a heavy technical semester.",
+          "author": "DE-Scholars Committee",
+          "batch": "AY24/25",
+          "date": "2025-06-01"
+        }
+      ]
+    }
+  ]
+}

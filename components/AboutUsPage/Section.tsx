@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 
 interface SectionProps {
@@ -14,88 +14,34 @@ const Section: React.FC<SectionProps> = ({
   image,
   reverse = false,
 }) => {
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
-
-  // Detect screen size and update state
-  useEffect(() => {
-    const handleResize = () => {
-      setIsSmallScreen(window.innerWidth <= 768);
-    };
-
-    // Initial check
-    handleResize();
-
-    // Add event listener
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup event listener
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: isSmallScreen
-          ? "column" // Stack vertically on small screens
-          : reverse
-            ? "row-reverse" // Reverse order on larger screens
-            : "row", // Default side-by-side
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: "40px 20px",
-        gap: "20px",
-      }}
-    >
-      <div style={styles.textContainer}>
-        <h2 style={styles.title}>{title}</h2>
-        <p style={styles.description}>{description}</p>
+    <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+      <div
+        className={`flex flex-col items-center gap-8 md:gap-14 ${
+          reverse ? "md:flex-row-reverse" : "md:flex-row"
+        }`}
+      >
+        <div className="flex-1">
+          <div className="h-1 w-12 rounded-full bg-nus-orange-500" />
+          <h2 className="mt-4 text-2xl font-bold text-nus-blue-600 sm:text-3xl">
+            {title}
+          </h2>
+          <p className="mt-4 text-base leading-7 text-slate-600">
+            {description}
+          </p>
+        </div>
+        <div className="flex-1">
+          <Image
+            src={image}
+            alt={title}
+            width={800}
+            height={500}
+            className="h-auto w-full rounded-2xl object-cover shadow-lg"
+          />
+        </div>
       </div>
-      <div style={styles.imageContainer}>
-        <Image
-          src={image}
-          alt={title}
-          width={800}
-          height={500}
-          style={styles.image}
-          placeholder="blur" // Optional: Use blur placeholder if available
-          blurDataURL={image} // Optional: Provide a base64-encoded placeholder
-        />
-      </div>
-    </div>
+    </section>
   );
-};
-
-const styles = {
-  textContainer: {
-    flex: 1,
-    minWidth: "50%", // Occupies 50% when in row layout
-    boxSizing: "border-box",
-    padding: "10px 20px",
-  } as React.CSSProperties,
-  title: {
-    fontSize: "24px",
-    fontWeight: "bold",
-    marginBottom: "16px",
-  } as React.CSSProperties,
-  description: {
-    fontSize: "16px",
-    lineHeight: "1.6",
-    textAlign: "justify",
-  } as React.CSSProperties,
-  imageContainer: {
-    flex: 1,
-    minWidth: "50%", // Occupies 50% when in row layout
-    height: "100%",
-    boxSizing: "border-box",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  } as React.CSSProperties,
-  image: {
-    borderRadius: "8px",
-    objectFit: "cover",
-  } as React.CSSProperties,
 };
 
 export default Section;
