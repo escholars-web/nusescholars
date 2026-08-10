@@ -1,18 +1,25 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useSyncExternalStore } from "react";
+import { createBrowserStore } from "../src/lib/browserStore";
+
+// Server renders as "already consented" so the popup never flashes during
+// hydration. The real value is read once the browser takes over.
+const consentStore = createBrowserStore(
+  () => localStorage.getItem("analyticsConsent") === "true",
+  true,
+);
 
 const ConsentPopup: React.FC = () => {
-  const [isConsentGiven, setIsConsentGiven] = useState(true);
-
-  useEffect(() => {
-    const consent = localStorage.getItem("analyticsConsent");
-    setIsConsentGiven(consent === "true");
-  }, []);
+  const isConsentGiven = useSyncExternalStore(
+    consentStore.subscribe,
+    consentStore.getSnapshot,
+    consentStore.getServerSnapshot,
+  );
 
   const handleConsent = () => {
     localStorage.setItem("analyticsConsent", "true");
-    setIsConsentGiven(true);
+    consentStore.invalidate();
   };
 
   if (isConsentGiven) {

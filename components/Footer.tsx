@@ -5,7 +5,6 @@ const navLinks = [
   { label: "About Us", href: "/about-us" },
   { label: "Humans of DE-Scholars", href: "/humans-of-descholars" },
   { label: "Study Hub", href: "/study-hub" },
-  { label: "Resources", href: "/resources" },
 ];
 
 const Footer: React.FC = () => {

@@ -61,9 +61,20 @@ Already on a branch? Drop the flag:
 npm run deploy -- "what you changed"
 ```
 
-That formats the code, builds it locally, commits everything, pushes the branch, and opens
-a pull request against `main`. If the build fails, nothing is committed or pushed, so you
-fix it and run the command again.
+That formats the code, builds it locally, commits everything, then publishes to two places.
+If the build fails, nothing is committed or pushed, so you fix it and run the command again.
+
+The two destinations behave differently, which matters:
+
+| Remote     | Repository                                                                  | What happens                                                                     |
+| ---------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `origin`   | [escholars-web/nusescholars](https://github.com/escholars-web/nusescholars) | Pushes your branch and opens a pull request. Nothing is live until it is merged. |
+| `personal` | [doux124/nusdescholars](https://github.com/doux124/nusdescholars)           | Pushes straight to its `main`, so it redeploys right away.                       |
+
+The personal mirror is best effort. If it fails, the command still reports the shared repo
+push as successful, because that is the one under review. Use `--skip-personal` to push only
+to the shared repo. The `personal` remote is added automatically if it is missing, so a
+fresh clone needs no setup.
 
 Merging the pull request is what deploys. GitHub Actions publishes to GitHub Pages and
 Vercel redeploys the same commit. Merge it in the browser, or run:

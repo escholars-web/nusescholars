@@ -6,17 +6,29 @@
  *   npm run deploy                                   (auto-generated message)
  *   npm run deploy -- --branch my-feature "message"  (create the branch first)
  *   npm run deploy -- --skip-build "message"         (skip the local build gate)
+ *   npm run deploy -- --skip-personal "message"      (shared repo only)
+ *
+ * It publishes to two places, which behave differently:
+ *
+ *   origin    escholars-web/nusescholars, the shared committee repo. Its main
+ *             is protected, so this pushes a branch and opens a pull request.
+ *             Nothing goes live there until someone merges it.
+ *   personal  doux124/nusdescholars, an unprotected mirror. This pushes
+ *             straight to its main, so it redeploys immediately.
  *
  * What it does, in order:
- *   1. Refuses to run on main, which is protected and rejects direct pushes.
+ *   1. Refuses to run on main, which is protected on the shared repo.
  *   2. Formats with Prettier (matches what CI checks).
  *   3. Builds locally, so a broken build fails here instead of in CI.
- *   4. Commits everything and pushes the current branch.
- *   5. Opens a pull request against main, or prints the link to open one.
+ *   4. Commits everything and pushes the current branch to origin.
+ *   5. Mirrors the same commits to personal/main, best effort. If a squash
+ *      merge on the shared repo has left the mirror diverged, it is re-pointed
+ *      at this branch with a lease rather than left permanently stuck.
+ *   6. Opens a pull request against origin/main, or prints a link to open one.
  *
- * Merging that pull request is what deploys. .github/workflows/nextjs.yml
- * builds and publishes to GitHub Pages on main, and Vercel redeploys the same
- * commit through its Git integration. This script uploads nothing itself.
+ * .github/workflows/nextjs.yml builds and publishes to GitHub Pages on main,
+ * and Vercel redeploys the same commit through its Git integration. This
+ * script uploads nothing itself.
  */
 import { execFileSync, spawnSync } from "node:child_process";
 import { existsSync, rmSync } from "node:fs";
@@ -24,8 +36,15 @@ import { existsSync, rmSync } from "node:fs";
 const BASE = "main";
 const IS_WINDOWS = process.platform === "win32";
 
+// The shared committee repo is `origin` and is protected, so changes there go
+// through a pull request. This personal mirror is unprotected, so its main is
+// updated directly and deploys immediately.
+const PERSONAL_REMOTE = "personal";
+const PERSONAL_URL = "https://github.com/doux124/nusdescholars.git";
+
 const argv = process.argv.slice(2);
 const skipBuild = argv.includes("--skip-build");
+const skipPersonal = argv.includes("--skip-personal");
 
 function step(text) {
   console.log(`\n→ ${text}`);
@@ -180,17 +199,109 @@ if (push.status !== 0) {
   fail("Push rejected.", hint);
 }
 
-// 5. Open a pull request, or hand over a link to open one by hand.
+// 5. Mirror to the personal repo, which has no branch protection, so its main
+// updates straight away. This is best effort: the shared repo is the one that
+// matters, and its branch is already safely pushed by this point.
+let personalResult = "skipped";
+if (skipPersonal) {
+  console.log("\n⚠ Skipping the personal mirror (--skip-personal).");
+} else {
+  step(`Mirroring to ${PERSONAL_REMOTE}/${BASE} (${PERSONAL_URL})...`);
+
+  // Self-heal on a fresh clone that has never had the remote configured.
+  if (quiet("git", ["remote", "get-url", PERSONAL_REMOTE]) !== 0) {
+    run("git", ["remote", "add", PERSONAL_REMOTE, PERSONAL_URL]);
+  }
+
+  /** Push HEAD onto the mirror's main, optionally with a lease. */
+  function pushMirror(extraArgs = []) {
+    const result = spawnSync(
+      "git",
+      ["push", ...extraArgs, PERSONAL_REMOTE, `HEAD:${BASE}`],
+      { encoding: "utf8", shell: IS_WINDOWS },
+    );
+    const output = `${result.stdout ?? ""}${result.stderr ?? ""}`;
+    process.stdout.write(output);
+    return { ok: result.status === 0, output };
+  }
+
+  let mirror = pushMirror();
+
+  // Squash-merging the pull request rewrites origin/main into a brand new
+  // commit, so the mirror, which holds the original branch commits, diverges
+  // for good and every later mirror push is rejected as non-fast-forward. The
+  // mirror is only ever a copy of what we deploy and holds nothing of its own,
+  // so re-point it. The lease is taken against the sha we just fetched, so this
+  // still refuses to clobber a commit that arrived from somewhere unexpected.
+  if (
+    !mirror.ok &&
+    /non-fast-forward|fetch first|behind|rejected/i.test(mirror.output)
+  ) {
+    console.log(
+      `\n  ${PERSONAL_REMOTE}/${BASE} has diverged, which is what a squash merge on the`,
+    );
+    console.log("  shared repo does. Re-pointing it at this branch...");
+
+    if (quiet("git", ["fetch", PERSONAL_REMOTE, BASE]) !== 0) {
+      console.error(`  Could not fetch ${PERSONAL_REMOTE}/${BASE}.`);
+    } else {
+      const remoteSha = git(["rev-parse", "FETCH_HEAD"]);
+      mirror = pushMirror([`--force-with-lease=${BASE}:${remoteSha}`]);
+    }
+  }
+
+  if (mirror.ok) {
+    personalResult = "pushed";
+  } else {
+    personalResult = "failed";
+    console.error(`\n⚠ Could not update ${PERSONAL_REMOTE}/${BASE}.`);
+    if (
+      /stale info|non-fast-forward|fetch first|behind|rejected/i.test(
+        mirror.output,
+      )
+    ) {
+      console.error(
+        `  Its ${BASE} moved while this ran. Re-run npm run deploy, or inspect it with:\n` +
+          `  git fetch ${PERSONAL_REMOTE} && git log ${PERSONAL_REMOTE}/${BASE}`,
+      );
+    } else if (
+      /Authentication|could not read Username|denied|not found/i.test(
+        mirror.output,
+      )
+    ) {
+      console.error(
+        `  Check you can push to ${PERSONAL_URL} with your current credentials.`,
+      );
+    }
+    console.error("  The shared repo push above still succeeded.");
+  }
+}
+
+// 6. Open a pull request, or hand over a link to open one by hand.
 const remote = git(["remote", "get-url", "origin"]);
 const slug = remote.replace(/^.*github\.com[/:]/, "").replace(/\.git$/, "");
 const compareUrl = `https://github.com/${slug}/compare/${BASE}...${branch}?expand=1`;
+const personalWeb = PERSONAL_URL.replace(/\.git$/, "");
+
+const personalNote =
+  personalResult === "pushed"
+    ? `Personal mirror: ${personalWeb} (${BASE} updated, redeploying now)`
+    : personalResult === "failed"
+      ? `Personal mirror: NOT updated, see the warning above.`
+      : `Personal mirror: skipped.`;
+
+// With two remotes configured, gh can be ambiguous about which repo it means
+// and may stop to ask. Pin it to the shared repo so this never blocks.
+const ghEnv = { ...process.env, GH_REPO: slug };
 
 const hasGh = quiet("gh", ["--version"]) === 0;
 const ghReady = hasGh && quiet("gh", ["auth", "status"]) === 0;
 
 if (!ghReady) {
   console.log(`
-✓ Pushed ${branch}.
+✓ Pushed ${branch} to origin.
+
+  ${personalNote}
 
   ${hasGh ? "gh is installed but not logged in (run: gh auth login)." : "gh is not installed (brew install gh)."}
   Open the pull request here:
@@ -206,6 +317,7 @@ const existing = spawnSync(
   {
     encoding: "utf8",
     shell: IS_WINDOWS,
+    env: ghEnv,
   },
 );
 
@@ -229,12 +341,13 @@ if (prUrl) {
       "--body",
       "",
     ],
-    { encoding: "utf8", shell: IS_WINDOWS },
+    { encoding: "utf8", shell: IS_WINDOWS, env: ghEnv },
   );
   process.stdout.write(`${create.stdout ?? ""}${create.stderr ?? ""}`);
   if (create.status !== 0) {
     console.log(
-      `\n  Could not create it automatically. Open it here:\n  ${compareUrl}\n`,
+      `\n  ${personalNote}\n` +
+        `\n  Could not create the pull request automatically. Open it here:\n  ${compareUrl}\n`,
     );
     process.exit(0);
   }
@@ -242,10 +355,11 @@ if (prUrl) {
 }
 
 console.log(`
-✓ Pushed ${branch} and the pull request is ready.
+✓ Deployed.
 
-  Pull request: ${prUrl}
+  ${personalNote}
 
-  Nothing is deployed until that pull request is merged into ${BASE}.
+  Shared repo: ${prUrl}
+  That one is NOT live until the pull request is merged into ${BASE}.
   Merge it in the browser, or run: gh pr merge --squash --delete-branch
 `);

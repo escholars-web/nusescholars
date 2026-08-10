@@ -1,16 +1,16 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState, useSyncExternalStore } from "react";
 import StarRating from "./StarRating";
 import ReviewCard from "./ReviewCard";
 import SubmitReviewForm from "./SubmitReviewForm";
 import { useNusAuth } from "../../src/lib/nusAuth";
 import {
   getModuleStats,
-  getPendingReviews,
+  pendingStore,
+  NO_PENDING_REVIEWS,
   type ModuleEntry,
   type ModuleNote,
-  type ModuleReview,
 } from "../../src/lib/moduleReviews";
 
 const NOTE_KIND_LABELS: Record<ModuleNote["kind"], string> = {
@@ -36,12 +36,15 @@ const StatPill: React.FC<{ label: string; value: string }> = ({
 const ModuleCard: React.FC<{ entry: ModuleEntry }> = ({ entry }) => {
   const { status } = useNusAuth();
   const [open, setOpen] = useState(false);
-  const [pending, setPending] = useState<ModuleReview[]>([]);
 
-  // Pending reviews live in localStorage, so they can only be read after mount.
-  useEffect(() => {
-    setPending(getPendingReviews(entry.code));
-  }, [entry.code]);
+  // Pending reviews live in localStorage, so they only exist once the browser
+  // takes over. Subscribing keeps this in sync when a review is submitted.
+  const pendingByModule = useSyncExternalStore(
+    pendingStore.subscribe,
+    pendingStore.getSnapshot,
+    pendingStore.getServerSnapshot,
+  );
+  const pending = pendingByModule[entry.code] ?? NO_PENDING_REVIEWS;
 
   const stats = getModuleStats(entry);
   const allReviews = [...entry.reviews, ...pending];
@@ -177,12 +180,9 @@ const ModuleCard: React.FC<{ entry: ModuleEntry }> = ({ entry }) => {
 
           {status === "signed-in" && (
             <div className="mt-6">
-              <SubmitReviewForm
-                moduleCode={entry.code}
-                onSubmitted={(review) =>
-                  setPending((prev) => [...prev, review])
-                }
-              />
+              {/* Submitting invalidates pendingStore, so the list above
+                  refreshes on its own. No callback needed. */}
+              <SubmitReviewForm moduleCode={entry.code} />
             </div>
           )}
         </div>

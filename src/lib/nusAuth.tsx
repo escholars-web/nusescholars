@@ -8,7 +8,9 @@ import React, {
   useMemo,
   useRef,
   useState,
+  useSyncExternalStore,
 } from "react";
+import { createBrowserStore } from "./browserStore";
 
 /**
  * Google sign in, restricted to NUS accounts.
@@ -41,7 +43,6 @@ export interface NusUser {
 }
 
 export type AuthStatus =
-  | "loading"
   | "unconfigured"
   | "signed-out"
   | "signed-in"
@@ -138,15 +139,38 @@ function readStoredUser(): NusUser | null {
   }
 }
 
+/** The saved session. Invalidated on sign in and sign out. */
+const sessionStore = createBrowserStore<NusUser | null>(readStoredUser, null);
+
+/**
+ * Whether the Google Identity Services script has finished loading. Invalidated
+ * by the script's load handler rather than tracked with component state.
+ */
+const gsiStore = createBrowserStore<boolean>(
+  () => Boolean(window.google?.accounts?.id),
+  false,
+);
+
 export const NusAuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID ?? "";
-  const [user, setUser] = useState<NusUser | null>(null);
   const [rejectedEmail, setRejectedEmail] = useState<string | null>(null);
-  const [scriptReady, setScriptReady] = useState(false);
-  const [hydrated, setHydrated] = useState(false);
   const initialised = useRef(false);
+
+  // The session lives in localStorage and the Google script lives on `window`,
+  // so both are read through external stores. That keeps the first render
+  // server safe and avoids loading them with setState inside an effect.
+  const user = useSyncExternalStore(
+    sessionStore.subscribe,
+    sessionStore.getSnapshot,
+    sessionStore.getServerSnapshot,
+  );
+  const scriptReady = useSyncExternalStore(
+    gsiStore.subscribe,
+    gsiStore.getSnapshot,
+    gsiStore.getServerSnapshot,
+  );
 
   const handleCredential = useCallback((response: GoogleCredentialResponse) => {
     const payload = response.credential
@@ -158,7 +182,12 @@ export const NusAuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
     if (!email || !verified || !isNusEmail(email)) {
       setRejectedEmail(email || "unknown account");
-      setUser(null);
+      try {
+        window.localStorage.removeItem(STORAGE_KEY);
+      } catch {
+        // Ignore, invalidating below is what matters.
+      }
+      sessionStore.invalidate();
       return;
     }
 
@@ -169,41 +198,37 @@ export const NusAuthProvider: React.FC<{ children: React.ReactNode }> = ({
       expiresAt: payload?.exp ?? Math.floor(Date.now() / 1000) + 3600,
     };
     setRejectedEmail(null);
-    setUser(next);
     try {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
     } catch {
       // Non fatal, the session just will not survive a reload.
     }
-  }, []);
-
-  // Restore any existing session before deciding what to render.
-  useEffect(() => {
-    setUser(readStoredUser());
-    setHydrated(true);
+    sessionStore.invalidate();
   }, []);
 
   // Load the Google Identity Services script once, and only if configured.
+  // This effect only talks to the DOM. Readiness is reported by invalidating
+  // gsiStore, never by setting state synchronously in here.
   useEffect(() => {
     if (clientId === "" || typeof window === "undefined") {
       return;
     }
     if (window.google?.accounts?.id) {
-      setScriptReady(true);
+      gsiStore.invalidate();
       return;
     }
     const existing = document.querySelector<HTMLScriptElement>(
       `script[src="${GSI_SRC}"]`,
     );
     if (existing) {
-      existing.addEventListener("load", () => setScriptReady(true));
+      existing.addEventListener("load", () => gsiStore.invalidate());
       return;
     }
     const script = document.createElement("script");
     script.src = GSI_SRC;
     script.async = true;
     script.defer = true;
-    script.onload = () => setScriptReady(true);
+    script.onload = () => gsiStore.invalidate();
     document.head.appendChild(script);
   }, [clientId]);
 
@@ -245,16 +270,13 @@ export const NusAuthProvider: React.FC<{ children: React.ReactNode }> = ({
     } catch {
       // Ignore, clearing state below is what matters.
     }
-    setUser(null);
+    sessionStore.invalidate();
     setRejectedEmail(null);
   }, []);
 
   const status: AuthStatus = useMemo(() => {
     if (clientId === "") {
       return "unconfigured";
-    }
-    if (!hydrated) {
-      return "loading";
     }
     if (user) {
       return "signed-in";
@@ -263,7 +285,7 @@ export const NusAuthProvider: React.FC<{ children: React.ReactNode }> = ({
       return "rejected-domain";
     }
     return "signed-out";
-  }, [clientId, hydrated, user, rejectedEmail]);
+  }, [clientId, user, rejectedEmail]);
 
   const value = useMemo(
     () => ({ status, user, rejectedEmail, signOut, renderSignInButton }),

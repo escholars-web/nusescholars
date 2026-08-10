@@ -1,4 +1,5 @@
 import rawData from "../data/module-reviews.json";
+import { createBrowserStore } from "./browserStore";
 
 /**
  * Data layer for the module reviews and notes section.
@@ -199,11 +200,24 @@ function writePending(pending: Record<string, ModuleReview[]>): void {
     // Storage can be full or blocked in private mode. The review is still shown
     // for this page view, it just will not survive a reload.
   }
+  pendingStore.invalidate();
 }
+
+/**
+ * Pending reviews as an external store, so components can subscribe with
+ * useSyncExternalStore rather than loading them via setState in an effect.
+ */
+export const pendingStore = createBrowserStore<Record<string, ModuleReview[]>>(
+  readPending,
+  {},
+);
+
+/** Stable empty array, so a module with no pending reviews keeps one reference. */
+export const NO_PENDING_REVIEWS: ModuleReview[] = [];
 
 /** Locally stored, not yet published reviews for a module. */
 export function getPendingReviews(moduleCode: string): ModuleReview[] {
-  return readPending()[moduleCode] ?? [];
+  return readPending()[moduleCode] ?? NO_PENDING_REVIEWS;
 }
 
 export function draftToReview(draft: ReviewDraft, now: Date): ModuleReview {
@@ -269,6 +283,7 @@ export async function submitReview(draft: ReviewDraft): Promise<SubmitResult> {
 
 /** The JSON a student can hand to the committee to get a pending review published. */
 export function reviewAsJson(review: ModuleReview, moduleCode: string): string {
-  const { pending: _pending, ...publishable } = review;
+  const publishable = { ...review };
+  delete publishable.pending;
   return JSON.stringify({ module: moduleCode, review: publishable }, null, 2);
 }

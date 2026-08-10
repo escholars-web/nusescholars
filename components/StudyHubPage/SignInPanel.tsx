@@ -34,14 +34,6 @@ const SignInPanel: React.FC = () => {
     );
   }
 
-  if (status === "loading") {
-    return (
-      <div className="rounded-xl border border-[--border] bg-white p-5">
-        <p className="text-sm text-slate-500">Checking your session...</p>
-      </div>
-    );
-  }
-
   if (status === "signed-in" && user) {
     return (
       <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-[--border] bg-white p-5">

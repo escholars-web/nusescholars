@@ -7,7 +7,6 @@ import {
   SUBMISSION_MODE,
   reviewAsJson,
   submitReview,
-  type ModuleReview,
 } from "../../src/lib/moduleReviews";
 
 const BATCHES = [
@@ -46,13 +45,9 @@ const selectClass =
 
 interface SubmitReviewFormProps {
   moduleCode: string;
-  onSubmitted: (review: ModuleReview) => void;
 }
 
-const SubmitReviewForm: React.FC<SubmitReviewFormProps> = ({
-  moduleCode,
-  onSubmitted,
-}) => {
+const SubmitReviewForm: React.FC<SubmitReviewFormProps> = ({ moduleCode }) => {
   const { user } = useNusAuth();
   const [rating, setRating] = useState(4);
   const [workload, setWorkload] = useState(3);
@@ -101,7 +96,6 @@ const SubmitReviewForm: React.FC<SubmitReviewFormProps> = ({
     });
 
     if (outcome.ok && outcome.review) {
-      onSubmitted(outcome.review);
       setBody("");
     }
   };
