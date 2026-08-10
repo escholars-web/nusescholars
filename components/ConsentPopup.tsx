@@ -1,24 +1,25 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Modal from "@mui/material/Modal";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import React, { useSyncExternalStore } from "react";
+import { createBrowserStore } from "../src/lib/browserStore";
+
+// Server renders as "already consented" so the popup never flashes during
+// hydration. The real value is read once the browser takes over.
+const consentStore = createBrowserStore(
+  () => localStorage.getItem("analyticsConsent") === "true",
+  true,
+);
 
 const ConsentPopup: React.FC = () => {
-  const [isConsentGiven, setIsConsentGiven] = useState(false);
-
-  useEffect(() => {
-    const consent = localStorage.getItem("analyticsConsent");
-    if (consent === "true") {
-      setIsConsentGiven(true);
-    }
-  }, []);
+  const isConsentGiven = useSyncExternalStore(
+    consentStore.subscribe,
+    consentStore.getSnapshot,
+    consentStore.getServerSnapshot,
+  );
 
   const handleConsent = () => {
     localStorage.setItem("analyticsConsent", "true");
-    setIsConsentGiven(true);
+    consentStore.invalidate();
   };
 
   if (isConsentGiven) {
@@ -26,44 +27,34 @@ const ConsentPopup: React.FC = () => {
   }
 
   return (
-    <Modal
-      open={!isConsentGiven}
-      aria-labelledby="modal-title"
-      aria-describedby="modal-description"
-      disableEscapeKeyDown
-      onClose={() => {}}
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-nus-blue-900/60 px-4 backdrop-blur-sm"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="consent-title"
+      aria-describedby="consent-description"
     >
-      <Box
-        sx={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: 400,
-          bgcolor: "background.paper",
-          boxShadow: 24,
-          p: 4,
-          borderRadius: 2,
-          outline: "none",
-        }}
-      >
-        <Typography id="modal-title" variant="h6" component="h2" gutterBottom>
+      <div className="w-full max-w-md rounded-2xl bg-white p-7 shadow-2xl">
+        <div className="h-1 w-12 rounded-full bg-nus-orange-500" />
+        <h2
+          id="consent-title"
+          className="mt-4 text-xl font-bold text-nus-blue-600"
+        >
           Analytics Notice
-        </Typography>
-        <Typography id="modal-description" sx={{ mb: 2 }}>
+        </h2>
+        <p id="consent-description" className="mt-3 leading-7 text-slate-600">
           This website uses analytics tools to improve your experience. By
           proceeding, you agree to allow us to collect data.
-        </Typography>
-        <Button
-          variant="contained"
-          color="primary"
-          fullWidth
+        </p>
+        <button
+          type="button"
           onClick={handleConsent}
+          className="mt-6 w-full rounded-lg bg-nus-blue-600 py-3 font-bold text-white transition-colors duration-200 hover:bg-nus-blue-700"
         >
           Got it!
-        </Button>
-      </Box>
-    </Modal>
+        </button>
+      </div>
+    </div>
   );
 };
 

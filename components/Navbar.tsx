@@ -1,103 +1,121 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
-import Box from "@mui/material/Box";
+import { usePathname } from "next/navigation";
+
+const navLinks = [
+  { label: "About Us", href: "/about-us" },
+  { label: "Humans of DE-Scholars", href: "/humans-of-descholars" },
+  { label: "Study Hub", href: "/study-hub" },
+];
 
 const Navbar: React.FC = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
-  const toggleMobileMenu = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
-  // Links for navigation
-  const navLinks = [
-    { label: "About Us", href: "/about-us" },
-    { label: "Humans of De-Scholars", href: "/humans-of-descholars" },
-    { label: "Resources", href: "/resources" },
-  ];
+  const isActive = (href: string) =>
+    pathname === href || pathname.startsWith(href + "/");
 
   return (
-    <AppBar
-      position="sticky"
-      color="default"
-      sx={{ backgroundColor: "#CDCDCD" }}
-    >
-      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        {/* Brand Name */}
-        <Link href="/" passHref>
-          <Typography
-            variant="h6"
-            sx={{
-              fontWeight: "bold",
-              cursor: "pointer",
-              textDecoration: "none",
-              color: "inherit",
-            }}
-          >
+    <header className="sticky top-0 z-50 border-b border-[--border] bg-white/90 shadow-sm backdrop-blur">
+      <nav
+        className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6"
+        aria-label="Main navigation"
+      >
+        {/* Brand */}
+        <Link
+          href="/"
+          className="flex items-center gap-2.5"
+          onClick={() => setMobileOpen(false)}
+        >
+          <span
+            aria-hidden
+            className="inline-block h-2.5 w-2.5 rounded-full bg-nus-orange-500"
+          />
+          <span className="text-lg font-bold tracking-tight text-nus-blue-600">
             NUS DE-SCHOLARS
-          </Typography>
+          </span>
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <Box
-          sx={{
-            display: { xs: "none", md: "flex" }, // Hide on small screens
-            gap: "16px",
-          }}
-        >
+        {/* Desktop links */}
+        <div className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => (
-            <Link key={link.label} href={link.href} passHref>
-              <Button color="inherit">{link.label}</Button>
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`relative rounded-md px-3 py-2 text-sm font-semibold transition-colors duration-200 ${
+                isActive(link.href)
+                  ? "text-nus-orange-700 after:absolute after:inset-x-3 after:bottom-0.5 after:h-0.5 after:rounded-full after:bg-nus-orange-500"
+                  : "text-nus-blue-600 hover:bg-nus-blue-50 hover:text-nus-blue-700"
+              }`}
+            >
+              {link.label}
             </Link>
           ))}
-        </Box>
+        </div>
 
-        {/* Mobile Menu Icon */}
-        <IconButton
-          color="inherit"
-          onClick={toggleMobileMenu}
-          sx={{ display: { xs: "flex", md: "none" } }} // Show on small screens
+        {/* Mobile menu button */}
+        <button
+          type="button"
+          className="rounded-md p-2 text-nus-blue-600 hover:bg-nus-blue-50 md:hidden"
+          aria-expanded={mobileOpen}
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          onClick={() => setMobileOpen(!mobileOpen)}
         >
-          <MenuIcon />
-        </IconButton>
-      </Toolbar>
+          {mobileOpen ? (
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          ) : (
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          )}
+        </button>
+      </nav>
 
-      {/* Mobile Drawer */}
-      <Drawer
-        anchor="right"
-        open={mobileOpen}
-        onClose={toggleMobileMenu}
-        sx={{
-          "& .MuiDrawer-paper": { width: "250px" },
-        }}
-      >
-        <List>
-          {navLinks.map((link) => (
-            <ListItem key={link.label} disablePadding>
-              <ListItemButton
-                onClick={toggleMobileMenu}
-                component="a"
+      {/* Mobile menu panel */}
+      {mobileOpen && (
+        <div className="border-t border-[--border] bg-white md:hidden">
+          <div className="space-y-1 px-4 py-3">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
                 href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className={`block rounded-md px-3 py-2.5 text-base font-semibold ${
+                  isActive(link.href)
+                    ? "bg-nus-orange-50 text-nus-orange-700"
+                    : "text-nus-blue-600 hover:bg-nus-blue-50"
+                }`}
               >
-                <ListItemText primary={link.label} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-    </AppBar>
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+    </header>
   );
 };
 

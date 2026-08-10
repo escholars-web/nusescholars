@@ -1,0 +1,39 @@
+{
+  "programme": {
+    "signUpUrl": "https://forms.office.com/r/REPLACE-WITH-MENTEE-FORM",
+    "mentorSignUpUrl": "https://forms.office.com/r/REPLACE-WITH-MENTOR-FORM",
+    "coordinatorEmail": "descholars.committee@u.nus.edu"
+  },
+  "mentors": [
+    {
+      "id": "placeholder-ceg",
+      "name": "Sample Senior",
+      "batch": "AY23/24",
+      "major": "Computer Engineering",
+      "modules": ["CS1010E", "EE2026"],
+      "blurb": "Happy to walk through recursion, pointers, and anything Verilog related. I struggled with both in year one, so I know exactly which parts are confusing.",
+      "format": "Small group, weekly",
+      "available": true
+    },
+    {
+      "id": "placeholder-mpe",
+      "name": "Sample Senior",
+      "batch": "AY23/24",
+      "major": "Mechanical Engineering",
+      "modules": ["ME2121", "MA1511"],
+      "blurb": "Thermodynamics and engineering calculus. I can go through past year papers with you and explain the steam tables properly.",
+      "format": "One to one, by appointment",
+      "available": true
+    },
+    {
+      "id": "placeholder-bme",
+      "name": "Sample Senior",
+      "batch": "AY24/25",
+      "major": "Biomedical Engineering",
+      "modules": ["MA1511", "CDE2000"],
+      "blurb": "Mostly here for first years finding the jump from JC to university a bit much. Ask me about time management as much as content.",
+      "format": "Small group, fortnightly",
+      "available": false
+    }
+  ]
+}

@@ -1,8 +1,6 @@
-"use client";
 import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { Stack } from "@mui/material";
 
 interface PageTemplateProps {
   children: React.ReactNode; // Allows any React content to be passed as children
@@ -10,13 +8,11 @@ interface PageTemplateProps {
 
 const PageTemplate: React.FC<PageTemplateProps> = ({ children }) => {
   return (
-    <Stack sx={{ minHeight: "100vh" }}>
+    <div className="flex min-h-screen flex-col bg-[--background]">
       <Navbar />
-      <Stack component="main" sx={{ flexGrow: 1 }}>
-        {children}
-      </Stack>
+      <main className="flex-1">{children}</main>
       <Footer />
-    </Stack>
+    </div>
   );
 };
 

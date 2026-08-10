@@ -36,7 +36,7 @@ export function getMajorName(key: string): string {
     return "Civil Engineering";
   } else if (key === "DS") {
     return "Design Scholars";
-  } else if (key == 'IPM') {
+  } else if (key == "IPM") {
     return "Infrastructure & Project Management";
   } else if (key === "masters") {
     return "Masters Students";

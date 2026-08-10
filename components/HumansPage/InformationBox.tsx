@@ -1,12 +1,3 @@
-import {
-  Box,
-  Divider,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-} from "@mui/material";
-
 interface InformationBoxProps {
   header: string;
   data: string;
@@ -14,23 +5,19 @@ interface InformationBoxProps {
 
 export default function InformationBox({ header, data }: InformationBoxProps) {
   return (
-    <Box>
-      <Divider sx={{ my: 4 }} />
-      <Typography
-        variant="h4"
-        align="center"
-        fontFamily="monospace"
-        sx={{ fontWeight: "bold", mb: 3, mt: 4 }}
-      >
-        {header}
-      </Typography>
-      <List>
-        {data.split("\n").map((achievement, index) => (
-          <ListItem key={index} disableGutters>
-            <ListItemText primary={`• ${achievement}`} />
-          </ListItem>
+    <div className="mt-8 rounded-xl border border-nus-blue-100 bg-nus-blue-50/60 p-6">
+      <h3 className="text-lg font-bold text-nus-blue-600">{header}</h3>
+      <ul className="mt-4 space-y-2.5">
+        {data.split("\n").map((item, index) => (
+          <li key={index} className="flex items-start gap-3 text-slate-700">
+            <span
+              aria-hidden
+              className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-nus-orange-500"
+            />
+            {item}
+          </li>
         ))}
-      </List>
-    </Box>
+      </ul>
+    </div>
   );
 }

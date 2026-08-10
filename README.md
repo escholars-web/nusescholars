@@ -45,3 +45,51 @@ git bash ./requirements.sh
 ```
 
 This will set up the necessary packages that you need.
+
+# Deploying
+
+`main` is protected and rejects direct pushes, so every change goes out through a pull
+request. Start a branch and run the deploy command on it:
+
+```
+npm run deploy -- --branch my-change "what you changed"
+```
+
+Already on a branch? Drop the flag:
+
+```
+npm run deploy -- "what you changed"
+```
+
+That formats the code, builds it locally, commits everything, then publishes to two places.
+If the build fails, nothing is committed or pushed, so you fix it and run the command again.
+
+The two destinations behave differently, which matters:
+
+| Remote     | Repository                                                                  | What happens                                                                     |
+| ---------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `origin`   | [escholars-web/nusescholars](https://github.com/escholars-web/nusescholars) | Pushes your branch and opens a pull request. Nothing is live until it is merged. |
+| `personal` | [doux124/nusdescholars](https://github.com/doux124/nusdescholars)           | Pushes straight to its `main`, so it redeploys right away.                       |
+
+The personal mirror is best effort. If it fails, the command still reports the shared repo
+push as successful, because that is the one under review. Use `--skip-personal` to push only
+to the shared repo. The `personal` remote is added automatically if it is missing, so a
+fresh clone needs no setup.
+
+Merging the pull request is what deploys. GitHub Actions publishes to GitHub Pages and
+Vercel redeploys the same commit. Merge it in the browser, or run:
+
+```
+gh pr merge --squash --delete-branch
+```
+
+The commit message is optional (`npm run deploy` on its own uses a dated one), and
+`npm run deploy -- --skip-build "message"` skips the local build if you are in a hurry.
+
+Opening pull requests from the terminal needs the GitHub CLI (`brew install gh`, then
+`gh auth login`). Without it the command still pushes your branch and prints a link to
+open the pull request in the browser.
+
+If the build fails with `ENOTEMPTY` on a path inside `.next`, stop your `next dev` server
+and try again. A running dev server writes into `.next` while the build is trying to
+clear it.
