@@ -14,14 +14,14 @@ const AboutUs: React.FC = () => {
       {/* Introduction Section */}
       <Section
         title="Introduction"
-        description="The E-Scholars Programme is a premier programme designed to attract the very best students to read any branch of engineering at the National University of Singapore (NUS). Students with exceptional potential will be provided with an enhanced educational experience with the objective of capitalising on academic abilities and personal aspirations to train well-rounded leaders and innovators."
+        description="The Design and Engineering Scholars Programme is the premier scholarship programme of the NUS College of Design and Engineering, awarded to students who pair academic excellence with a strong co-curricular record and real leadership potential. D-Scholars read Architecture, Industrial Design or Landscape Architecture, and E-Scholars read any branch of engineering. The point of it is an enhanced educational experience that capitalises on both your academic abilities and your personal aspirations. Both scholarships are bond-free and cover full tuition, a living allowance, subsidised on-campus accommodation for two years, and a one-time computer allowance, and both are open to Singapore citizens presenting local qualifications."
         image="/images/about-us/beach.png"
       />
 
       {/* Academics Section */}
       <Section
         title="Academics"
-        description="Students admitted to the E-Scholars programme are also enrolled in one of the Engineering Departments at NUS. The graduation requirements for E-Scholars is the same as all other Engineering students in the chosen Department. Nevertheless, E-Scholars will complete their B.Eng degree in 3 years. The distribution of modular credits across the 3 years is slightly different for each of the Departments. Starting from AY21/22, E-Scholars can choose to complete a double degree or B.Eng in 4 years instead of going by the traditional 3 years B.Eng with a M.Sc in their 4th year."
+        description="Scholars are enrolled in one of the College of Design and Engineering departments, and the graduation requirements are the same as for every other student in that department. E-Scholars follow an accelerated four-year pathway: finish your chosen B.Eng in three years, then spend the fourth on a Master’s degree (the 3+1), a Double Degree Programme, or other academic pursuits. How the units are spread across those years differs slightly from department to department. D-Scholars reading Industrial Design or Landscape Architecture complete a four-year Bachelor’s degree, and those reading Architecture go on to a Master of Architecture after theirs. Scholars in both programmes are paired with a carefully selected pool of professors who provide close mentorship along the way."
         image="/images/about-us/talk.png"
         reverse
       />
@@ -29,14 +29,14 @@ const AboutUs: React.FC = () => {
       {/* Overseas Experience Section */}
       <Section
         title="Overseas Experience"
-        description="The overseas experience is one of the key features of the E-Scholars programme. E-Scholars enjoy priority consideration for the Student Exchange Programme (SEP) and NUS Overseas College (NOC) programme, which are generously subsidised under the scholarship. Furthermore, E-Scholars enjoy subsidised Summer and Winter Exchange programmes, a perk on par with the NUS Global Merit Scholarship!"
+        description="The overseas experience is one of the key features of the programme. E-Scholars enjoy priority consideration for entry into both the Student Exchange Programme (SEP) and the NUS Overseas Colleges (NOC) programme, while D-Scholars enjoy priority consideration for SEP. Subsidies are available under the scholarship for overseas experiential programmes, Summer and Winter Exchange included, a perk on par with the NUS Global Merit Scholarship!"
         image="/images/about-us/travels.png"
       />
 
       {/* Community Section */}
       <Section
-        title="DE-Scholars Community"
-        description="Most importantly, E-Scholars enjoy the perk of staying at one of the University Town residences. In particular, they will have the choice between Residential College 4 and other colleges. Additionally, the E-Scholar Committee plans regular events to cater to the welfare of the fellow scholars such as bonding events during recess and reading week, exam welfare, monthly townhall gathering with food and good vibes!"
+        title="D&E-Scholars Community"
+        description="D&E-Scholars are guaranteed placement in one of the Residential Colleges on campus, excluding Acacia College, so you start university already living alongside people from every corner of NUS. Additionally, the D&E-Scholars Student Committee plans regular events such as town halls and bonding events, with welfare and good vibes, for scholars to get together and take a break for a while!"
         image="/images/about-us/formals.png"
         reverse
       />

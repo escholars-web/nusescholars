@@ -14,9 +14,9 @@ const iconClass = "h-6 w-6";
 
 const PILLARS: Pillar[] = [
   {
-    title: "Module reviews",
+    title: "Course reviews",
     description:
-      "Honest write ups from DE-Scholars who actually sat the module, with ratings for workload and difficulty so you can plan a survivable semester.",
+      "Honest write-ups from D&E-Scholars who actually sat the course, with ratings for workload and difficulty so you can plan a survivable semester.",
     icon: (
       <svg
         className={iconClass}
@@ -58,7 +58,7 @@ const PILLARS: Pillar[] = [
   {
     title: "Senior Teach Junior",
     description:
-      "Stuck on a module? Get matched with a senior who cleared it last year and can walk you through it. Free, run by students, no judgement.",
+      "Stuck on a course? Get matched with a senior who cleared it last year and can walk you through it. Free, run by students, no judgement.",
     icon: (
       <svg
         className={iconClass}
@@ -96,7 +96,7 @@ const ComingSoon: React.FC = () => {
           We are still building this one
         </h2>
         <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">
-          The Study Hub is where academic help for DE-Scholars will live. It is
+          The Study Hub is where academic help for D&E-Scholars will live. It is
           not open yet, but here is what is coming, and you can already put your
           hand up for the parts that need people.
         </p>
@@ -126,7 +126,7 @@ const ComingSoon: React.FC = () => {
         <p className="mt-2 max-w-2xl text-sm leading-6 text-nus-blue-100">
           The hub is only as good as what people put into it. Two things make
           the biggest difference right now: seniors volunteering to teach, and
-          anyone willing to write up a module they have taken.
+          anyone willing to write up a course they have taken.
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
           <a
@@ -143,7 +143,7 @@ const ComingSoon: React.FC = () => {
             rel="noopener noreferrer"
             className="rounded-lg border border-white/40 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:border-nus-orange-300 hover:text-nus-orange-200"
           >
-            Register for help with a module
+            Register for help with a course
           </a>
         </div>
       </div>

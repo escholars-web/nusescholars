@@ -1,6 +1,6 @@
-# NUS DE Scholars website repo
+# NUS D&E-Scholars website repo
 
-Welcome to the NUS DE Scholars website repo! You may find our (WIP) site [here](https://nusescholars.vercel.app/).
+Welcome to the NUS D&E-Scholars website repo! You may find our (WIP) site [here](https://nusescholars.vercel.app/).
 
 ## Getting started
 
@@ -45,6 +45,24 @@ git bash ./requirements.sh
 ```
 
 This will set up the necessary packages that you need.
+
+# Environment variables
+
+Nothing here is required to run or build the site. Without them the Study Hub
+still renders, it just tells you sign in is not configured.
+
+Put these in `.env.local` for local development, and in the Vercel project
+settings for production. `.env.local` is gitignored, so it never leaves your
+machine.
+
+| Variable                      | What it is                                                                                     |
+| ----------------------------- | ---------------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_ENTRA_CLIENT_ID` | Application (client) ID of the Azure app registration that powers NUS sign in on `/study-hub`. |
+| `NEXT_PUBLIC_ENTRA_TENANT`    | Tenant the app is registered in. Defaults to `nus.edu.sg`, so usually leave it alone.          |
+| `NEXT_PUBLIC_REVIEW_ENDPOINT` | Where submitted module reviews are POSTed. Unset, reviews stay in the author's browser.        |
+
+The Azure side of this is a one time setup, written out in
+[developer_guide.md](developer_guide.md) under "Study Hub".
 
 # Deploying
 

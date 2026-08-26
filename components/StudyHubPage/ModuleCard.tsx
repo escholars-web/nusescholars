@@ -33,6 +33,47 @@ const StatPill: React.FC<{ label: string; value: string }> = ({
   </div>
 );
 
+/**
+ * One note or resource. A note with no URL is one the committee has lined up
+ * but nobody has shared the file for yet, so it reads as a placeholder rather
+ * than sending anyone to a dead link.
+ */
+const NoteRow: React.FC<{ note: ModuleNote }> = ({ note }) => {
+  const label = (
+    <>
+      <span className="rounded-full bg-nus-orange-100 px-2.5 py-0.5 text-xs font-bold text-nus-orange-800">
+        {NOTE_KIND_LABELS[note.kind]}
+      </span>
+      <span className="font-semibold text-nus-blue-700">{note.title}</span>
+    </>
+  );
+
+  if (note.url === "") {
+    return (
+      <div className="flex flex-wrap items-center gap-2 rounded-lg border border-dashed border-[--border] bg-white px-4 py-3 text-sm opacity-70">
+        {label}
+        <span className="text-xs italic text-slate-500">
+          nobody has shared this one yet
+        </span>
+      </div>
+    );
+  }
+
+  return (
+    <a
+      href={note.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex flex-wrap items-center gap-2 rounded-lg border border-[--border] bg-white px-4 py-3 text-sm transition-colors hover:border-nus-orange-400"
+    >
+      {label}
+      <span className="text-xs text-slate-500">
+        shared by {note.contributor}
+      </span>
+    </a>
+  );
+};
+
 const ModuleCard: React.FC<{ entry: ModuleEntry }> = ({ entry }) => {
   const { status } = useNusAuth();
   const [open, setOpen] = useState(false);
@@ -133,29 +174,14 @@ const ModuleCard: React.FC<{ entry: ModuleEntry }> = ({ entry }) => {
             {entry.notes.length > 0 ? (
               <ul className="mt-3 space-y-2">
                 {entry.notes.map((note) => (
-                  <li key={note.url}>
-                    <a
-                      href={note.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex flex-wrap items-center gap-2 rounded-lg border border-[--border] bg-white px-4 py-3 text-sm transition-colors hover:border-nus-orange-400"
-                    >
-                      <span className="rounded-full bg-nus-orange-100 px-2.5 py-0.5 text-xs font-bold text-nus-orange-800">
-                        {NOTE_KIND_LABELS[note.kind]}
-                      </span>
-                      <span className="font-semibold text-nus-blue-700">
-                        {note.title}
-                      </span>
-                      <span className="text-xs text-slate-500">
-                        shared by {note.contributor}
-                      </span>
-                    </a>
+                  <li key={note.title}>
+                    <NoteRow note={note} />
                   </li>
                 ))}
               </ul>
             ) : (
               <p className="mt-2 text-sm italic text-slate-500">
-                Nobody has shared notes for this module yet.
+                Nobody has shared notes for this course yet.
               </p>
             )}
           </section>
@@ -173,7 +199,7 @@ const ModuleCard: React.FC<{ entry: ModuleEntry }> = ({ entry }) => {
               </div>
             ) : (
               <p className="mt-2 text-sm italic text-slate-500">
-                Be the first to review this module.
+                Be the first to review this course.
               </p>
             )}
           </section>

@@ -3,11 +3,14 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import { GitHub } from "@mui/icons-material";
 import Image from "next/image";
 import InformationBox from "./InformationBox";
+import BackLink from "./BackLink";
+import { indefiniteArticle } from "../../functions/writeups";
 
 interface ProfileProps {
   name: string;
   academicYear: string;
-  bachelors: string;
+  /** Null for the master's cohort, whose undergraduate degree is not recorded. */
+  bachelors: string | null;
   masters?: string | null;
   introduction: string;
   interestsAndHobbies: string;
@@ -17,6 +20,9 @@ interface ProfileProps {
   instagramUrl: string;
   githubUrl: string;
   lastUpdated: string;
+  /** Where the back button goes, normally this person's batch page. */
+  backHref: string;
+  backLabel: string;
 }
 
 const Profile: React.FC<ProfileProps> = ({
@@ -32,6 +38,8 @@ const Profile: React.FC<ProfileProps> = ({
   instagramUrl,
   githubUrl,
   lastUpdated,
+  backHref,
+  backLabel,
 }) => {
   const showConnectWithMe: boolean = !!(
     linkedInUrl ||
@@ -55,6 +63,10 @@ const Profile: React.FC<ProfileProps> = ({
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+      <div className="mb-6">
+        <BackLink href={backHref} label={backLabel} />
+      </div>
+
       <div className="rounded-2xl bg-white p-6 shadow-md sm:p-10">
         {/* Header Section */}
         <div className="flex flex-col items-center gap-8 md:flex-row md:items-start">
@@ -69,7 +81,7 @@ const Profile: React.FC<ProfileProps> = ({
           </div>
           <div className="text-center md:text-left">
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-nus-orange-700">
-              Humans of DE-Scholars
+              Humans of D&E-Scholars
             </p>
             <h1 className="mt-2 text-3xl font-bold text-nus-blue-600">
               Hi! I&apos;m {name}
@@ -78,12 +90,21 @@ const Profile: React.FC<ProfileProps> = ({
               <span className="rounded-full bg-nus-blue-50 px-3 py-1 text-xs font-semibold text-nus-blue-700">
                 Batch {academicYear}
               </span>
-              <span className="rounded-full bg-nus-orange-50 px-3 py-1 text-xs font-semibold text-nus-orange-700">
-                {bachelors}
-              </span>
+              {bachelors && (
+                <span className="rounded-full bg-nus-orange-50 px-3 py-1 text-xs font-semibold text-nus-orange-700">
+                  {bachelors}
+                </span>
+              )}
             </div>
             <p className="mt-4 leading-7 text-slate-600">
-              I&apos;m a {bachelors} student from Batch {academicYear}.
+              {bachelors ? (
+                <>
+                  I&apos;m {indefiniteArticle(bachelors)} {bachelors} student
+                  from Batch {academicYear}.
+                </>
+              ) : (
+                <>I&apos;m a D&E-Scholar from Batch {academicYear}.</>
+              )}
               {masters && <> Additionally, I&apos;m pursuing my {masters}.</>}
             </p>
             <p className="mt-4 text-xs text-slate-400">
@@ -101,7 +122,9 @@ const Profile: React.FC<ProfileProps> = ({
           </h2>
           <div className="mx-auto mt-3 h-1 w-12 rounded-full bg-nus-orange-500" />
         </div>
-        <p className="mt-6 leading-7 text-slate-600">{introduction}</p>
+        <p className="mt-6 whitespace-pre-line text-justify leading-7 text-slate-600">
+          {introduction}
+        </p>
 
         {/* Notable Achievements Section */}
         {notableAchievements && (

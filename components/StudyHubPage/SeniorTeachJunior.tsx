@@ -5,9 +5,45 @@ import {
   getCoveredModules,
   getMentors,
   getProgrammeLinks,
+  isPlaceholderUrl,
+  isSampleRoster,
   mentorsForModule,
   type SeniorMentor,
 } from "../../src/lib/seniorMentors";
+
+/**
+ * A sign up call to action. Renders as a disabled note rather than a link while
+ * the form URL is still a placeholder, so nothing on the live page leads to a
+ * dead form.
+ */
+const SignUpAction: React.FC<{
+  url: string;
+  label: string;
+  primary?: boolean;
+}> = ({ url, label, primary = false }) => {
+  const style = primary
+    ? "bg-nus-orange-500 text-white hover:bg-nus-orange-600"
+    : "border border-white/40 text-white hover:border-nus-orange-300 hover:text-nus-orange-200";
+
+  if (isPlaceholderUrl(url)) {
+    return (
+      <span className="cursor-not-allowed rounded-lg border border-white/30 px-5 py-2.5 text-sm font-bold text-white/60">
+        {label} (form coming soon)
+      </span>
+    );
+  }
+
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`rounded-lg px-5 py-2.5 text-sm font-bold transition-colors ${style}`}
+    >
+      {label}
+    </a>
+  );
+};
 
 const MentorCard: React.FC<{ mentor: SeniorMentor }> = ({ mentor }) => (
   <article
@@ -65,30 +101,36 @@ const SeniorTeachJunior: React.FC = () => {
       <div className="rounded-2xl bg-gradient-to-br from-nus-blue-700 to-nus-blue-600 p-6 text-white sm:p-8">
         <h3 className="text-xl font-bold">Senior Teach Junior</h3>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-nus-blue-100">
-          Struggling with a module is normal, and a senior who cleared it last
+          Struggling with a course is normal, and a senior who cleared it last
           year is often the fastest way out of a hole. Tell us what you need
-          help with and we will match you with a DE-Scholar who has taken it.
+          help with and we will match you with a D&E-Scholar who has taken it.
           Free, run by students, no judgement.
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
-          <a
-            href={links.signUpUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg bg-nus-orange-500 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-nus-orange-600"
-          >
-            I need help with a module
-          </a>
-          <a
-            href={links.mentorSignUpUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg border border-white/40 px-5 py-2.5 text-sm font-bold text-white transition-colors hover:border-nus-orange-300 hover:text-nus-orange-200"
-          >
-            I want to teach juniors
-          </a>
+          <SignUpAction
+            url={links.signUpUrl}
+            label="I need help with a course"
+            primary
+          />
+          <SignUpAction
+            url={links.mentorSignUpUrl}
+            label="I want to teach juniors"
+          />
         </div>
       </div>
+
+      {isSampleRoster() && (
+        <div className="mt-6 rounded-xl border border-nus-blue-200 bg-nus-blue-50 p-5">
+          <h4 className="text-sm font-bold text-nus-blue-700">
+            These seniors are examples
+          </h4>
+          <p className="mt-2 text-sm leading-6 text-slate-600">
+            Nobody has signed up to teach yet, so the cards below show what an
+            entry looks like rather than real people you can be matched with.
+            Register your interest anyway and the committee will work on it.
+          </p>
+        </div>
+      )}
 
       <div className="mt-8 flex flex-wrap items-end justify-between gap-3">
         <div>
@@ -105,7 +147,7 @@ const SeniorTeachJunior: React.FC = () => {
             htmlFor="mentor-module"
             className="block text-xs font-semibold uppercase tracking-wide text-slate-500"
           >
-            Filter by module
+            Filter by course
           </label>
           <select
             id="mentor-module"
@@ -113,7 +155,7 @@ const SeniorTeachJunior: React.FC = () => {
             onChange={(e) => setModuleFilter(e.target.value)}
             className="mt-1 rounded-lg border border-[--border] bg-white px-3 py-2 text-sm text-slate-700 focus:border-nus-blue-500 focus:outline-none focus:ring-1 focus:ring-nus-blue-500"
           >
-            <option value="all">All modules</option>
+            <option value="all">All courses</option>
             {covered.map((code) => (
               <option key={code} value={code}>
                 {code}

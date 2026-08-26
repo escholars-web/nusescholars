@@ -1,4 +1,5 @@
 {
+  "sample": true,
   "modules": [
     {
       "code": "CS1010E",
@@ -8,14 +9,14 @@
       "notes": [
         {
           "title": "Recursion and lists cheatsheet",
-          "url": "https://drive.google.com/drive/folders/example-cs1010e-cheatsheet",
-          "contributor": "DE-Scholars Committee",
+          "url": "",
+          "contributor": "D&E-Scholars Committee",
           "kind": "cheatsheet"
         },
         {
           "title": "Past year practical exam walkthroughs",
-          "url": "https://drive.google.com/drive/folders/example-cs1010e-pe",
-          "contributor": "DE-Scholars Committee",
+          "url": "",
+          "contributor": "D&E-Scholars Committee",
           "kind": "past-papers"
         }
       ],
@@ -27,7 +28,7 @@
           "difficulty": 3,
           "semester": "AY24/25 Sem 1",
           "body": "Solid introduction to Python if you have never coded before. The weekly missions look small but they compound, so start them the day they are released instead of the night before. The practical exams are the real filter, and the only preparation that works is writing code under time pressure rather than reading solutions.",
-          "author": "DE-Scholars Committee",
+          "author": "D&E-Scholars Committee",
           "batch": "AY24/25",
           "date": "2025-01-10"
         },
@@ -52,8 +53,8 @@
       "notes": [
         {
           "title": "Project report template and rubric breakdown",
-          "url": "https://drive.google.com/drive/folders/example-eg1311-report",
-          "contributor": "DE-Scholars Committee",
+          "url": "",
+          "contributor": "D&E-Scholars Committee",
           "kind": "template"
         }
       ],
@@ -65,7 +66,7 @@
           "difficulty": 2,
           "semester": "AY24/25 Sem 1",
           "body": "Easily the most fun module in year one. You build something real with a team and the assessment rewards effort more than raw technical skill. The main risk is group dynamics, so agree on a meeting cadence in week one and keep a shared log of who is doing what.",
-          "author": "DE-Scholars Committee",
+          "author": "D&E-Scholars Committee",
           "batch": "AY24/25",
           "date": "2025-01-12"
         }
@@ -79,8 +80,8 @@
       "notes": [
         {
           "title": "Formula sheet and worked tutorial solutions",
-          "url": "https://drive.google.com/drive/folders/example-ma1511-notes",
-          "contributor": "DE-Scholars Committee",
+          "url": "",
+          "contributor": "D&E-Scholars Committee",
           "kind": "notes"
         }
       ],
@@ -106,8 +107,8 @@
       "notes": [
         {
           "title": "Verilog syntax reference and lab tips",
-          "url": "https://drive.google.com/drive/folders/example-ee2026-verilog",
-          "contributor": "DE-Scholars Committee",
+          "url": "",
+          "contributor": "D&E-Scholars Committee",
           "kind": "notes"
         }
       ],
@@ -119,7 +120,7 @@
           "difficulty": 4,
           "semester": "AY24/25 Sem 2",
           "body": "The FPGA project is the highlight and the reason to take this seriously. Lab sessions move quickly, so read the lab manual before you turn up or you will spend the whole slot catching up. Debugging on hardware takes far longer than you plan for, so budget extra weeks.",
-          "author": "DE-Scholars Committee",
+          "author": "D&E-Scholars Committee",
           "batch": "AY23/24",
           "date": "2025-05-20"
         }
@@ -133,8 +134,8 @@
       "notes": [
         {
           "title": "Thermo tables and cycle summary sheets",
-          "url": "https://drive.google.com/drive/folders/example-me2121-tables",
-          "contributor": "DE-Scholars Committee",
+          "url": "",
+          "contributor": "D&E-Scholars Committee",
           "kind": "cheatsheet"
         }
       ],
@@ -166,7 +167,7 @@
           "difficulty": 2,
           "semester": "AY24/25 Sem 2",
           "body": "Light on content and heavy on reflection writing, which some people love and others find frustrating. Attendance and participation carry a real chunk of the grade, so just turn up and speak. A good module to pair with a heavy technical semester.",
-          "author": "DE-Scholars Committee",
+          "author": "D&E-Scholars Committee",
           "batch": "AY24/25",
           "date": "2025-06-01"
         }

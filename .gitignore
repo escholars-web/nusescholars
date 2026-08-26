@@ -37,3 +37,10 @@ venv/
 
 # macOS
 .DS_Store
+
+# Impeccable design skill, installed per developer via `npx impeccable install`.
+# The .claude copy is already ignored above. These are the GitHub Copilot copy,
+# 150+ vendored files that do not belong in the shared repo.
+.github/skills/
+.github/agents/
+.github/hooks/

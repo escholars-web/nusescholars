@@ -30,18 +30,39 @@ export interface ProgrammeLinks {
 }
 
 interface MentorData {
+  /** Set while the roster is still the placeholder set, see isSampleRoster. */
+  sample?: boolean;
   programme: ProgrammeLinks;
   mentors: SeniorMentor[];
 }
 
+const data = rawData as MentorData;
+
+/**
+ * Whether the roster is still placeholder content. Same story as the module
+ * reviews: the page says so rather than passing off examples as real seniors.
+ * Drop the `sample` flag from src/data/senior-mentors.json once real ones sign
+ * up and the notice disappears on its own.
+ */
+export function isSampleRoster(): boolean {
+  return data.sample === true;
+}
+
+/**
+ * True for a sign up link nobody has filled in yet, so the UI can show it as
+ * not ready instead of sending someone to a 404.
+ */
+export function isPlaceholderUrl(url: string): boolean {
+  return url.includes("REPLACE-WITH");
+}
+
 export function getProgrammeLinks(): ProgrammeLinks {
-  return (rawData as MentorData).programme;
+  return data.programme;
 }
 
 /** Available mentors first, then alphabetical by major. */
 export function getMentors(): SeniorMentor[] {
-  const mentors = (rawData as MentorData).mentors;
-  return [...mentors].sort((a, b) => {
+  return [...data.mentors].sort((a, b) => {
     if (a.available !== b.available) {
       return a.available ? -1 : 1;
     }

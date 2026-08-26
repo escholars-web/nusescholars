@@ -1,7 +1,8 @@
 {
+  "sample": true,
   "programme": {
     "signUpUrl": "https://forms.office.com/r/REPLACE-WITH-MENTEE-FORM",
-    "mentorSignUpUrl": "https://forms.office.com/r/REPLACE-WITH-MENTOR-FORM",
+    "mentorSignUpUrl": "https://forms.cloud.microsoft/r/dmHQVGBR0y",
     "coordinatorEmail": "descholars.committee@u.nus.edu"
   },
   "mentors": [

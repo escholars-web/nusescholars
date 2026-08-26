@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 const navLinks = [
   { label: "About Us", href: "/about-us" },
-  { label: "Humans of DE-Scholars", href: "/humans-of-descholars" },
+  { label: "Humans of D&E-Scholars", href: "/humans-of-descholars" },
   { label: "Study Hub", href: "/study-hub" },
 ];
 
@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
             className="inline-block h-2.5 w-2.5 rounded-full bg-nus-orange-500"
           />
           <span className="text-lg font-bold tracking-tight text-nus-blue-600">
-            NUS DE-SCHOLARS
+            NUS D&E-SCHOLARS
           </span>
         </Link>
 

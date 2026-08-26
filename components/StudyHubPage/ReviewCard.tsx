@@ -42,7 +42,7 @@ const Meter: React.FC<{ label: string; value: number; caption: string }> = ({
 );
 
 const ReviewCard: React.FC<{ review: ModuleReview }> = ({ review }) => {
-  const author = review.author ?? "Anonymous DE-Scholar";
+  const author = review.author ?? "Anonymous D&E-Scholar";
 
   return (
     <article

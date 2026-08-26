@@ -23,6 +23,7 @@ export type NoteKind =
 
 export interface ModuleNote {
   title: string;
+  /** Empty while the note is planned but the file has not been shared yet. */
   url: string;
   contributor: string;
   kind: NoteKind;
@@ -68,10 +69,35 @@ export interface ModuleStats {
 
 const PENDING_STORAGE_KEY = "descholars.pendingModuleReviews.v1";
 
+interface RawModuleData {
+  /** Set while the file is still the placeholder set the hub launched with. */
+  sample?: boolean;
+  modules: ModuleEntry[];
+}
+
+const data = rawData as RawModuleData;
+
+/**
+ * Whether the committed dataset is still placeholder content.
+ *
+ * The hub launched before there were real reviews to show, so the page says so
+ * rather than passing off examples as the real thing. Drop the `sample` flag
+ * from src/data/module-reviews.json once genuine entries land and the notice
+ * disappears on its own.
+ */
+export function isSampleData(): boolean {
+  return data.sample === true;
+}
+
 /** Every module in the committed dataset, sorted by module code. */
 export function getModules(): ModuleEntry[] {
-  const modules = (rawData as { modules: ModuleEntry[] }).modules;
-  return [...modules].sort((a, b) => a.code.localeCompare(b.code));
+  return [...data.modules].sort((a, b) => a.code.localeCompare(b.code));
+}
+
+/** One course by code, or undefined when nothing matches. */
+export function getModule(code: string): ModuleEntry | undefined {
+  const wanted = code.toUpperCase();
+  return getModules().find((m) => m.code.toUpperCase() === wanted);
 }
 
 export function getDepartments(modules: ModuleEntry[]): string[] {

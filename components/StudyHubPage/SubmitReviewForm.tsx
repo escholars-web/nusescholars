@@ -187,7 +187,7 @@ const SubmitReviewForm: React.FC<SubmitReviewFormProps> = ({ moduleCode }) => {
           </label>
           <p className="mt-1 text-xs text-slate-500">
             {anonymous
-              ? "Shown as Anonymous DE-Scholar."
+              ? "Shown as Anonymous D&E-Scholar."
               : `Shown as ${user?.name ?? "your name"}.`}
           </p>
         </Field>

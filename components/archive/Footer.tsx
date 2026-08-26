@@ -91,7 +91,10 @@ const Footer: React.FC = () => {
         >
           Having an issue?
         </Typography>
-        <Link href="https://forms.office.com/r/5qTXrzmsei" passHref>
+        <Link
+          href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Xu-lWwkxd06Fvc_rDTR-ghecPE4DPyNPqqMbtiR9ghNUMVE0RjFVV1dQMTVLSU83WkQwWURMMUFUSS4u"
+          passHref
+        >
           <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <IconButton sx={{ color: "white" }} aria-label="Bug-Report">
               <PestControlIcon />

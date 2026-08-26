@@ -1,10 +1,12 @@
 import React from "react";
 import Link from "next/link";
+import { BUG_REPORT_URL, INSTAGRAM_URL } from "../src/lib/siteLinks";
 
 const navLinks = [
   { label: "About Us", href: "/about-us" },
-  { label: "Humans of DE-Scholars", href: "/humans-of-descholars" },
+  { label: "Humans of D&E-Scholars", href: "/humans-of-descholars" },
   { label: "Study Hub", href: "/study-hub" },
+  { label: "Events", href: "/events" },
 ];
 
 const Footer: React.FC = () => {
@@ -21,7 +23,7 @@ const Footer: React.FC = () => {
               aria-hidden
               className="inline-block h-2.5 w-2.5 rounded-full bg-nus-orange-500"
             />
-            NUS DE-SCHOLARS
+            NUS D&E-SCHOLARS
           </Link>
           <ul className="mt-4 space-y-2.5">
             {navLinks.map((link) => (
@@ -43,7 +45,7 @@ const Footer: React.FC = () => {
             Connect with Us
           </h3>
           <a
-            href="https://www.instagram.com/nusdescholars"
+            href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-4 inline-flex items-center gap-2.5 text-sm text-nus-blue-100 transition-colors hover:text-nus-orange-300"
@@ -66,7 +68,7 @@ const Footer: React.FC = () => {
             Having an Issue?
           </h3>
           <a
-            href="https://forms.office.com/r/5qTXrzmsei"
+            href={BUG_REPORT_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-4 inline-flex items-center gap-2.5 text-sm text-nus-blue-100 transition-colors hover:text-nus-orange-300"
@@ -95,7 +97,7 @@ const Footer: React.FC = () => {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-6 sm:flex-row sm:px-6">
           <div className="text-center sm:text-left">
             <p className="text-xs text-nus-blue-100">
-              © {new Date().getFullYear()} NUS DE-Scholars Student Committee.
+              © {new Date().getFullYear()} NUS D&E-Scholars Student Committee.
               Made with love.
             </p>
             <p className="mt-1 text-xs text-nus-blue-200/70">
