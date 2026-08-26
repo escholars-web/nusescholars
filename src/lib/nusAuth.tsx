@@ -198,6 +198,8 @@ interface PendingSignIn {
   state: string;
   nonce: string;
   redirectUri: string;
+  /** Path the person was on when they started, restored after the round trip. */
+  returnTo: string;
 }
 
 function writePending(pending: PendingSignIn): void {
@@ -290,13 +292,28 @@ function failed(message: string): AuthSnapshot {
 /* The flow                                                                    */
 /* -------------------------------------------------------------------------- */
 
+/**
+ * Every sign in returns to this one path, never to the page it started from.
+ *
+ * Entra matches redirect URIs exactly, so deriving one from the current
+ * pathname would mean registering every course page, and every course added
+ * later would silently break sign in. Pinning it to a single path keeps the
+ * registered list to the origins the site is served from. Where the person was
+ * is carried in `returnTo` and restored once the token is in.
+ */
+const REDIRECT_PATH = "/study-hub";
+
 function redirectUri(): string {
-  return window.location.origin + window.location.pathname;
+  return window.location.origin + REDIRECT_PATH;
 }
 
 /** Drop the OAuth parameters so a reload does not replay a spent code. */
 function cleanUrl(): void {
-  window.history.replaceState({}, "", redirectUri() + window.location.hash);
+  window.history.replaceState(
+    {},
+    "",
+    window.location.origin + window.location.pathname + window.location.hash,
+  );
 }
 
 function adopt(idToken: string, nonce: string): void {
@@ -381,6 +398,15 @@ async function exchangeCode(code: string, state: string): Promise<void> {
       return;
     }
     adopt(payload.id_token, pending.nonce);
+
+    // Entra always returns to REDIRECT_PATH, so put the person back on the page
+    // they were reading when they signed in. This is a real navigation rather
+    // than a history rewrite, because the course page has to actually render;
+    // the session survives it because adopt() has already written it to
+    // localStorage.
+    if (pending.returnTo && pending.returnTo !== window.location.pathname) {
+      window.location.replace(pending.returnTo);
+    }
   } catch {
     setSnapshot(
       failed(
@@ -442,6 +468,7 @@ async function beginSignIn(): Promise<void> {
     state: randomString(16),
     nonce: randomString(16),
     redirectUri: redirectUri(),
+    returnTo: window.location.pathname,
   };
   writePending(pending);
 
