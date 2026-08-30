@@ -165,9 +165,8 @@ const EventsPage: React.FC = () => {
           What we get up to
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
-          Nothing here is compulsory and nothing costs you anything. Come to the
-          ones that sound good and skip the rest, that is genuinely how most
-          people use them.
+          Nothing here is compulsory and nothing costs you anything. Come to
+          whichever ones sound good, that is genuinely how most people use them.
         </p>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

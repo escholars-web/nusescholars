@@ -21,7 +21,7 @@ const AboutUs: React.FC = () => {
       {/* Academics Section */}
       <Section
         title="Academics"
-        description="Scholars are enrolled in one of the College of Design and Engineering departments, and the graduation requirements are the same as for every other student in that department. E-Scholars follow an accelerated four-year pathway: finish your chosen B.Eng in three years, then spend the fourth on a Master’s degree (the 3+1), a Double Degree Programme, or other academic pursuits. How the units are spread across those years differs slightly from department to department. D-Scholars reading Industrial Design or Landscape Architecture complete a four-year Bachelor’s degree, and those reading Architecture go on to a Master of Architecture after theirs. Scholars in both programmes are paired with a carefully selected pool of professors who provide close mentorship along the way."
+        description="Scholars are enrolled in one of the College of Design and Engineering majors, and the graduation requirements are the same as for every other student in that major. E-Scholars follow an accelerated three year programme for their undergraduate degree, followed by the opportunity to pursue a Master’s degree in their fourth year. Alternatively, they may choose to pursue a four year Double Degree Programme. How the units are spread across those years differs slightly from major to major. D-Scholars reading Industrial Design or Landscape Architecture complete a four-year Bachelor’s degree, and those reading Architecture go on to a Master of Architecture after theirs. Scholars in both programmes are paired with a carefully selected pool of professors who provide close mentorship along the way."
         image="/images/about-us/talk.png"
         reverse
       />
@@ -37,7 +37,7 @@ const AboutUs: React.FC = () => {
       <Section
         title="D&E-Scholars Community"
         description="D&E-Scholars are guaranteed placement in one of the Residential Colleges on campus, excluding Acacia College, so you start university already living alongside people from every corner of NUS. Additionally, the D&E-Scholars Student Committee plans regular events such as town halls and bonding events, with welfare and good vibes, for scholars to get together and take a break for a while!"
-        image="/images/about-us/formals.png"
+        image="/images/about-us/orientation.jpg"
         reverse
       />
     </PageTemplate>

@@ -8,7 +8,7 @@ import LandingGalleryLinks from "./LandingPage/LandingGalleryLinks";
 const galleryItems = [
   {
     title: "About Us",
-    image: "/images/batch-pics/AY2223-EScholars.jpg",
+    image: "/images/about-us/orientation.jpg",
     link: "/about-us",
   },
   {
