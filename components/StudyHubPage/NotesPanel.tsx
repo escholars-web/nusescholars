@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import MarkdownNote from "./MarkdownNote";
+import { NOTE_CONTENT } from "../../src/data/notes";
 import type { ModuleNote } from "../../src/lib/moduleReviews";
 
 const NOTE_KIND_LABELS: Record<ModuleNote["kind"], string> = {
@@ -52,6 +54,9 @@ const NoteViewer: React.FC<{ note: ModuleNote; onClose: () => void }> = ({
 const NoteRow: React.FC<{ note: ModuleNote }> = ({ note }) => {
   const [open, setOpen] = useState(false);
 
+  const bundled =
+    note.content !== undefined ? NOTE_CONTENT[note.content] : undefined;
+
   const label = (
     <>
       <span className="rounded-full bg-nus-orange-100 px-2.5 py-0.5 text-xs font-bold text-nus-orange-800">
@@ -60,6 +65,36 @@ const NoteRow: React.FC<{ note: ModuleNote }> = ({ note }) => {
       <span className="font-semibold text-nus-blue-700">{note.title}</span>
     </>
   );
+
+  // Bundled text: rendered inline, so there is no file URL to pass around.
+  if (bundled !== undefined) {
+    return (
+      <div>
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="flex w-full flex-wrap items-center gap-2 rounded-xl border-2 border-nus-orange-100 bg-white px-4 py-3.5 text-left text-sm transition-colors hover:border-nus-orange-400"
+        >
+          {label}
+          <span className="text-xs text-slate-500">
+            shared by {note.contributor}
+          </span>
+          <span className="ml-auto text-xs font-bold text-nus-orange-800">
+            {open ? "Hide" : "Read"}
+          </span>
+        </button>
+        {open && (
+          <div className="mt-3 rounded-xl border-2 border-nus-orange-100 bg-white px-6 py-7 sm:px-9">
+            <MarkdownNote markdown={bundled} />
+            <p className="mt-9 border-t border-[--border] pt-4 text-xs leading-6 text-slate-500">
+              Shared by {note.contributor}. Please keep it within
+              D&amp;E-Scholars rather than reposting it elsewhere.
+            </p>
+          </div>
+        )}
+      </div>
+    );
+  }
 
   if (note.url === "") {
     return (

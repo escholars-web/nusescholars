@@ -2,6 +2,34 @@
   "sample": true,
   "modules": [
     {
+      "code": "BN2112",
+      "title": "Molecular and Cell Biology for Biomedical Engineers",
+      "department": "Biomedical Engineering",
+      "units": 4,
+      "notes": [],
+      "reviews": []
+    },
+    {
+      "code": "CDE2000",
+      "title": "Creating Narratives",
+      "department": "College of Design and Engineering",
+      "units": 4,
+      "notes": [],
+      "reviews": [
+        {
+          "id": "cde2000-1",
+          "rating": 3,
+          "workload": 2,
+          "difficulty": 2,
+          "semester": "AY24/25 Sem 2",
+          "body": "Light on content and heavy on reflection writing, which some people love and others find frustrating. Attendance and participation carry a real chunk of the grade, so just turn up and speak. A good module to pair with a heavy technical semester.",
+          "author": "D&E-Scholars Committee",
+          "batch": "AY24/25",
+          "date": "2025-06-01"
+        }
+      ]
+    },
+    {
       "code": "CS1010E",
       "title": "Programming Methodology",
       "department": "Computing",
@@ -46,11 +74,45 @@
       ]
     },
     {
+      "code": "EE2026",
+      "title": "Digital Design",
+      "department": "Electrical and Computer Engineering",
+      "units": 4,
+      "notes": [
+        {
+          "title": "Verilog syntax reference and lab tips",
+          "url": "",
+          "contributor": "D&E-Scholars Committee",
+          "kind": "notes"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "ee2026-1",
+          "rating": 4,
+          "workload": 4,
+          "difficulty": 4,
+          "semester": "AY24/25 Sem 2",
+          "body": "The FPGA project is the highlight and the reason to take this seriously. Lab sessions move quickly, so read the lab manual before you turn up or you will spend the whole slot catching up. Debugging on hardware takes far longer than you plan for, so budget extra weeks.",
+          "author": "D&E-Scholars Committee",
+          "batch": "AY23/24",
+          "date": "2025-05-20"
+        }
+      ]
+    },
+    {
       "code": "EG1311",
       "title": "Design and Make",
       "department": "College of Design and Engineering",
       "units": 4,
       "notes": [
+        {
+          "title": "Full course notes: physics, electronics, Arduino and CAD",
+          "url": "",
+          "contributor": "Jordan",
+          "kind": "notes",
+          "content": "eg1311"
+        },
         {
           "title": "Project report template and rubric breakdown",
           "url": "",
@@ -100,33 +162,6 @@
       ]
     },
     {
-      "code": "EE2026",
-      "title": "Digital Design",
-      "department": "Electrical and Computer Engineering",
-      "units": 4,
-      "notes": [
-        {
-          "title": "Verilog syntax reference and lab tips",
-          "url": "",
-          "contributor": "D&E-Scholars Committee",
-          "kind": "notes"
-        }
-      ],
-      "reviews": [
-        {
-          "id": "ee2026-1",
-          "rating": 4,
-          "workload": 4,
-          "difficulty": 4,
-          "semester": "AY24/25 Sem 2",
-          "body": "The FPGA project is the highlight and the reason to take this seriously. Lab sessions move quickly, so read the lab manual before you turn up or you will spend the whole slot catching up. Debugging on hardware takes far longer than you plan for, so budget extra weeks.",
-          "author": "D&E-Scholars Committee",
-          "batch": "AY23/24",
-          "date": "2025-05-20"
-        }
-      ]
-    },
-    {
       "code": "ME2121",
       "title": "Engineering Thermodynamics",
       "department": "Mechanical Engineering",
@@ -150,26 +185,6 @@
           "author": null,
           "batch": "AY23/24",
           "date": "2025-05-28"
-        }
-      ]
-    },
-    {
-      "code": "CDE2000",
-      "title": "Creating Narratives",
-      "department": "College of Design and Engineering",
-      "units": 4,
-      "notes": [],
-      "reviews": [
-        {
-          "id": "cde2000-1",
-          "rating": 3,
-          "workload": 2,
-          "difficulty": 2,
-          "semester": "AY24/25 Sem 2",
-          "body": "Light on content and heavy on reflection writing, which some people love and others find frustrating. Attendance and participation carry a real chunk of the grade, so just turn up and speak. A good module to pair with a heavy technical semester.",
-          "author": "D&E-Scholars Committee",
-          "batch": "AY24/25",
-          "date": "2025-06-01"
         }
       ]
     }

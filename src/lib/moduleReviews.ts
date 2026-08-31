@@ -27,6 +27,12 @@ export interface ModuleNote {
   url: string;
   contributor: string;
   kind: NoteKind;
+  /**
+   * Key into src/data/notes for a note whose text lives in the bundle rather
+   * than as a file under public/. Takes precedence over `url`, and is the
+   * preferred form: a file in public/ has its own guessable URL, this does not.
+   */
+  content?: string;
 }
 
 export interface ModuleReview {

@@ -16,6 +16,12 @@ const config = [
       "node_modules/**",
       "public/**",
       "next-env.d.ts",
+      // Vendored design-skill scripts, installed per developer by
+      // `npx impeccable install`. Not ours to lint.
+      ".claude/**",
+      ".github/skills/**",
+      ".github/agents/**",
+      ".github/hooks/**",
     ],
   },
   ...coreWebVitals,

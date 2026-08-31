@@ -1,0 +1,12 @@
+{
+  "note": "Who gets pinged on Telegram when a question is posted for a course. chatId is the NUMERIC id from the bot's getUpdates, not the @username: a bot cannot start a conversation with someone by username, the person has to message the bot first. Leave chatId null until you have it and that volunteer is simply skipped.",
+  "courses": {
+    "EG1311": [
+      {
+        "name": "Jordan",
+        "telegram": "@Jordanljy",
+        "chatId": 1423004161
+      }
+    ]
+  }
+}
