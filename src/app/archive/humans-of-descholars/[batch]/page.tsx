@@ -34,9 +34,17 @@ const batchHeaders: Record<string, { image: string; title: string }> = {
 
 export const dynamicParams = false;
 
+/**
+ * Only the batches the archive actually has a header for.
+ *
+ * The archive is a frozen copy of the previous site, so it does not grow when a
+ * new intake is added to database.json. Deriving these from `batchHeaders`
+ * rather than from the database keys is what stops a new batch from being
+ * prerendered here with no header and crashing the build.
+ */
 export function generateStaticParams() {
-  return Object.keys(database)
-    .filter((key) => key.startsWith("ay"))
+  return Object.keys(batchHeaders)
+    .filter((batch) => batch in database)
     .map((batch) => ({ batch }));
 }
 

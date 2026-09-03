@@ -22,7 +22,7 @@ const AboutUs: React.FC = () => {
       <Section
         title="Academics"
         description="Scholars are enrolled in one of the College of Design and Engineering majors, and the graduation requirements are the same as for every other student in that major. E-Scholars follow an accelerated three year programme for their undergraduate degree, followed by the opportunity to pursue a Master’s degree in their fourth year. Alternatively, they may choose to pursue a four year Double Degree Programme. How the units are spread across those years differs slightly from major to major. D-Scholars reading Industrial Design or Landscape Architecture complete a four-year Bachelor’s degree, and those reading Architecture go on to a Master of Architecture after theirs. Scholars in both programmes are paired with a carefully selected pool of professors who provide close mentorship along the way."
-        image="/images/about-us/talk.png"
+        image="/images/about-us/talk.jpg"
         reverse
       />
 
